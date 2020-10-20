@@ -27,10 +27,13 @@ public class Cashier implements ICashier {
      */
     @Override
     public IGamblerCard distributeGamblerCard() {
+
         IGamblerCard card = new GamblerCard();
         cardList.add(card);
         loggingAuthority.logHandOutGamblingCard(card.getCardID());
+
         return card;
+
     }
 
     /**
@@ -76,7 +79,13 @@ public class Cashier implements ICashier {
 
     }
 
-    public List<IGamblerCard> getListOfGamblerCards() {
-        return cardList;
+    public boolean checkCardIsValid(IGamblerCard card)
+    {
+        for(IGamblerCard c:cardList)
+        {
+            if(card.getCardID().equals(c.getCardID()))
+                return true;
+        }
+        return false;
     }
 }

@@ -2,10 +2,20 @@ package casino.cashier;
 
 
 import casino.bet.BetID;
+import casino.idfactory.IDFactory;
 
+import javax.smartcardio.Card;
 import java.util.Set;
 
 public class GamblerCard implements IGamblerCard {
+
+    final private CardID id;
+
+    public GamblerCard()
+    {
+        this.id = (CardID) IDFactory.generateID("CardID");
+    }
+
     /**
      * returns all generated betID's by this card
      *
@@ -49,6 +59,6 @@ public class GamblerCard implements IGamblerCard {
 
     @Override
     public CardID getCardID() {
-        return null;
+        return id;
     }
 }
