@@ -3,11 +3,19 @@ package casino.cashier;
 
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.IBetLoggingAuthority;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cashier implements ICashier {
 
+    private IBetLoggingAuthority loggingAuthority;
+    private List<IGamblerCard> cardList = new ArrayList<IGamblerCard>();
+
     public Cashier(IBetLoggingAuthority loggingAuthority) {
+        this.loggingAuthority=loggingAuthority;
     }
 
     /**
@@ -19,7 +27,10 @@ public class Cashier implements ICashier {
      */
     @Override
     public IGamblerCard distributeGamblerCard() {
-        return null;
+        IGamblerCard card = new GamblerCard();
+        cardList.add(card);
+        loggingAuthority.logHandOutGamblingCard(card.getCardID());
+        return card;
     }
 
     /**
@@ -63,5 +74,9 @@ public class Cashier implements ICashier {
     @Override
     public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
 
+    }
+
+    public List<IGamblerCard> getListOfGamblerCards() {
+        return cardList;
     }
 }

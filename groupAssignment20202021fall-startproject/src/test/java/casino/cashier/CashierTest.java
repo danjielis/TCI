@@ -21,7 +21,7 @@ public class CashierTest {
         List<IGamblerCard> tempCardList = testCashier.getListOfGamblerCards();
 
         Assert.assertTrue(tempCardList.contains(tempCard));
-        verify(bla.logHandOutGamblingCard(tempCard.getCardID()));
+        verify(bla).logHandOutGamblingCard(tempCard.getCardID());
     }
 
 }

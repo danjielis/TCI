@@ -1,5 +1,7 @@
 package casino.idfactory;
 
+import casino.cashier.CardID;
+
 /**
  * Factory for creation of GeneralID objects.
  * creation of the right object is done by specifying the type to create as a string
@@ -22,7 +24,12 @@ public class IDFactory {
      * @return an instance of the correct GeneralID object type, or null otherwise.
      */
     public static GeneralID generateID(String idType){
-        return null; // TODO replace by correct code after creating tests first.
+        switch(idType)
+        {
+            case "CardID":
+                return new CardID();
+        }
+        return null;
     };
 
 
