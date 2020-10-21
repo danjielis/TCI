@@ -19,8 +19,8 @@ public class AbstractGameTest {
         IBetTokenAuthority betTokenAuthority = mock(IBetTokenAuthority.class);
 
         AbstractGame testAbstractGame = mock(AbstractGame.class, Mockito.withSettings().useConstructor(betLoggingAuthority, betTokenAuthority).defaultAnswer(CALLS_REAL_METHODS));
-        Assert.assertSame(betLoggingAuthority, testAbstractGame.betLoggingAuthority);
-        Assert.assertSame(betTokenAuthority, testAbstractGame.betTokenAuthority);
+        Assert.assertSame(betLoggingAuthority, testAbstractGame.loggingAuthority);
+        Assert.assertSame(betTokenAuthority, testAbstractGame.tokenAuthority);
 
     }
 
