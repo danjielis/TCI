@@ -38,4 +38,11 @@ public class GamingMachineTest {
         assertNull(machine.getConnectedCard());
     }
 
+
+    @Test(expected = NoPlayerCardException.class)
+    public void ShouldNotBeAbleToPlaceBetWithNoConnectedCard() throws NoPlayerCardException {
+        GamingMachine machine = new GamingMachine();
+
+        machine.placeBet(100);
+    }
 }
