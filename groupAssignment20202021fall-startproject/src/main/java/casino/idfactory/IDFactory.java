@@ -1,5 +1,6 @@
 package casino.idfactory;
 
+import casino.bet.BetID;
 import casino.cashier.CardID;
 
 /**
@@ -28,6 +29,8 @@ public class IDFactory {
         {
             case "CardID":
                 return new CardID();
+            case "BetID":
+                return new BetID();
         }
         return null;
     };

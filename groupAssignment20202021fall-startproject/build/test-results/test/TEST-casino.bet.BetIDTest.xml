@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.bet.BetIDTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-21T19:29:11" hostname="LAPTOP-1J11B0F5" time="0.116">
+  <properties/>
+  <testcase name="IDFactoryCanCreateBetID" classname="casino.bet.BetIDTest" time="0.116"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

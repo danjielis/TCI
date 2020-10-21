@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="casino.cashier.CashierTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-20T21:30:19" hostname="LAPTOP-1J11B0F5" time="2.194">
-  <properties/>
-  <testcase name="CashierCanHandGamblerCardAndTrackGamblerCardsAndInformBetLoggingAuthority" classname="casino.cashier.CashierTest" time="2.194"/>
-  <system-out><![CDATA[casino.cashier.CardID@62178137
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
