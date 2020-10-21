@@ -1,5 +1,7 @@
 package casino.cashier;
 
+import casino.bet.BetID;
+
 import java.util.Set;
 
 public interface IGamblerCard {
