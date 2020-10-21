@@ -12,22 +12,27 @@ import static org.mockito.Mockito.mock;
 
 public class GamingMachineTest {
 
+    private GamblerCard card;
+
+    @Before
+    public void setUp() {
+        this.card = mock(GamblerCard.class);
+    }
+
     @Test
     public void ShouldConnectCardToAGamingMachine() {
         GamingMachine machine = new GamingMachine();
-        GamblerCard card = mock(GamblerCard.class);
 
-        machine.connectCard(card);
+        machine.connectCard(this.card);
 
-        assertEquals(card, machine.getConnectedCard());
+        assertEquals(this.card, machine.getConnectedCard());
     }
 
     @Test
     public void ShouldDisconnectCardFromAGamingMachine() throws CurrentBetMadeException {
         GamingMachine machine = new GamingMachine();
-        GamblerCard card = mock(GamblerCard.class);
 
-        machine.connectCard(card);
+        machine.connectCard(this.card);
         machine.disconnectCard();
 
         assertNull(machine.getConnectedCard());
