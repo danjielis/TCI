@@ -16,9 +16,7 @@ public class BetIDTest {
     @Test
     public void IDFactoryCanCreateBetID()
     {
-        IDFactory testFactory = new IDFactory();
-
-        GeneralID temp = testFactory.generateID("BetID");
+        GeneralID temp = IDFactory.generateID("BetID");
 
         Assert.assertThat(temp, instanceOf(BetID.class));
     }
