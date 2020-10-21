@@ -1,8 +1,17 @@
 package casino.game;
 
 
+import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.IBetTokenAuthority;
 
 abstract class AbstractGame implements IGame{
 
- // define only the constructor here
+    protected IBetTokenAuthority betTokenAuthority;
+    protected IBetLoggingAuthority betLoggingAuthority;
+
+    public AbstractGame(IBetLoggingAuthority loggingAuthority, IBetTokenAuthority tokenAuthority)
+    {
+        betLoggingAuthority = loggingAuthority;
+        betTokenAuthority = tokenAuthority;
+    }
 }

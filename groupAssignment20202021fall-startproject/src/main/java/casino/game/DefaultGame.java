@@ -3,8 +3,14 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.gamingmachine.IGamingMachine;
+import gamblingauthoritiy.IBetLoggingAuthority;
+import gamblingauthoritiy.IBetTokenAuthority;
 
 public class DefaultGame extends AbstractGame {
+
+    public DefaultGame(IBetLoggingAuthority loggingAuthority, IBetTokenAuthority tokenAuthority) {
+        super(loggingAuthority, tokenAuthority);
+    }
 
     /**
      * create and start a new BettingRound.
