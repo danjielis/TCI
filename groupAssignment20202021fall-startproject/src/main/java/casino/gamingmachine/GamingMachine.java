@@ -6,6 +6,8 @@ import casino.cashier.IGamblerCard;
 
 public class GamingMachine implements IGamingMachine {
 
+    private IGamblerCard connectedCard;
+
     /**
      * try to place bet with given amount and connected card.
      * amount needs to be checked with the cashier
@@ -49,7 +51,7 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void connectCard(IGamblerCard card) {
-
+        this.connectedCard = card;
     }
 
     /**
@@ -60,6 +62,10 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
+        this.connectedCard = null;
+    }
 
+    public IGamblerCard getConnectedCard() {
+        return this.connectedCard;
     }
 }
