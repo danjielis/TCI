@@ -43,6 +43,6 @@ public class GamingMachineTest {
     public void ShouldNotBeAbleToPlaceBetWithNoConnectedCard() throws NoPlayerCardException {
         GamingMachine machine = new GamingMachine();
 
-        machine.placeBet(100);
+        machine.placeBet(1000);
     }
 }
