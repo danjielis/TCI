@@ -26,9 +26,9 @@ public class GameRuleTest {
     }
 
     @Test
-    public void ShouldDetermineWinnerOutOfBetSet() {
+    public void ShouldDetermineWinnerOutOfBetSet() throws NoBetsMadeException {
         GameRule gameRule = new GameRule();
-        int random = (int) Math.random();
+        int random = (int) Math.random() * 100;
         List<Bet> bets = new ArrayList<>();
 
         BetID betID_1 = mock(BetID.class);

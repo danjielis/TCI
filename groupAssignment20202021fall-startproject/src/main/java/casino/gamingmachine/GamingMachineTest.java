@@ -45,4 +45,7 @@ public class GamingMachineTest {
 
         machine.placeBet(1000);
     }
+
+
+
 }
