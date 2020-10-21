@@ -46,4 +46,13 @@ public class GameRuleTest {
         assertNotNull(result);
     }
 
+    @Test(expected = NoBetsMadeException.class)
+    public void ShouldThrowNoBetsMadeExceptionIfNoBetsMade() throws NoBetsMadeException {
+        GameRule gameRule = new GameRule();
+        List<Bet> bets = new ArrayList<>();
+        Set<Bet> bet_set = new HashSet<>(bets);
+
+        BetResult result = gameRule.determineWinner(69, bet_set);
+    }
+
 }
