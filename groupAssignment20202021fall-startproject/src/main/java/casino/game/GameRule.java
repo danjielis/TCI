@@ -19,6 +19,8 @@ public class GameRule implements IGameRule {
      */
     @Override
     public BetResult determineWinner(Integer randomWinValue, Set<Bet> bets) throws NoBetsMadeException {
+        if (bets.isEmpty()) { throw new NoBetsMadeException(); }
+
         List<Bet> betList = new ArrayList<>();
         betList.addAll(bets);
 
