@@ -2,6 +2,7 @@ package casino.cashier;
 
 
 import casino.bet.BetID;
+import casino.bet.MoneyAmount;
 import casino.idfactory.IDFactory;
 
 import javax.smartcardio.Card;
@@ -10,10 +11,11 @@ import java.util.Set;
 public class GamblerCard implements IGamblerCard {
 
     final private CardID id;
-
+    private MoneyAmount balance;
     public GamblerCard()
     {
         this.id = (CardID) IDFactory.generateID("CardID");
+        balance = new MoneyAmount(0);
     }
 
     /**
@@ -60,5 +62,16 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public CardID getCardID() {
         return id;
+    }
+
+    @Override
+    public void setBalance(MoneyAmount amount)
+    {
+        balance = amount;
+    }
+
+    @Override
+    public MoneyAmount getBalance() {
+        return balance;
     }
 }

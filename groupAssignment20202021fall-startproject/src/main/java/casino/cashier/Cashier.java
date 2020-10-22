@@ -78,8 +78,9 @@ public class Cashier implements ICashier {
      * @throws InvalidAmountException when MoneyAmount contains a negative value or is null
      */
     @Override
-    public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
-
+    public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException
+    {
+        card.setBalance(new MoneyAmount(card.getBalance().getAmountInCents() + amount.getAmountInCents()));
     }
 
     public boolean checkCardIsValid(IGamblerCard card)

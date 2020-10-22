@@ -1,6 +1,7 @@
 package casino.cashier;
 
 import casino.bet.BetID;
+import casino.bet.MoneyAmount;
 
 import java.util.Set;
 
@@ -32,4 +33,7 @@ public interface IGamblerCard {
     int getNumberOfBetIDs();
 
     CardID getCardID();
+
+    void setBalance(MoneyAmount amount);
+    MoneyAmount getBalance();
 }
