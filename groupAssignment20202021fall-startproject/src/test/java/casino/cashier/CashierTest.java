@@ -1,5 +1,6 @@
 package casino.cashier;
 
+import casino.bet.Bet;
 import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;
@@ -69,5 +70,17 @@ public class CashierTest {
         testCashier.addAmount(tempCard, new MoneyAmount(100));
 
         Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 100);
+    }
+
+    @Test
+    public void CashierCanValidateBet() throws BetNotExceptedException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        GamblerCard tempCard = mock(GamblerCard.class);
+        Bet testBet = mock(Bet.class);
+        when (tempCard.getBalance()).thenReturn(new MoneyAmount(150));
+        when(testBet.getMoneyAmount()).thenReturn(new MoneyAmount(100));
+
+        Assert.assertTrue(testCashier.checkIfBetIsValid(tempCard, testBet));
+
     }
 }
