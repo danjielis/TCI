@@ -1,5 +1,6 @@
 package casino.cashier;
 
+import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;
 import org.junit.Before;
@@ -39,6 +40,15 @@ public class CashierTest {
 
         Assert.assertFalse(testCashier.checkCardIsValid(tempCard));
         verify(loggingAuthority).logHandInGamblingCard(tempCard.getCardID(), tempCard.returnBetIDsAndClearCard());
+    }
+
+    @Test
+    public void CashierCanAddMoneyBalance() throws InvalidAmountException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        IGamblerCard tempCard = testCashier.distributeGamblerCard();
+        testCashier.addAmount(tempCard, new MoneyAmount(100));
+
+        Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 100);
     }
 
 }
