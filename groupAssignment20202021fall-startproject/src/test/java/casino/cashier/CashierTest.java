@@ -60,4 +60,14 @@ public class CashierTest {
         testCashier.addAmount(tempCard, new MoneyAmount(-100));
     }
 
+    @Test
+    public void CashierCanAddMoneyBalanceWithMockedGamblerCard() throws InvalidAmountException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        GamblerCard tempCard = mock(GamblerCard.class);
+        when (tempCard.getBalance()).thenReturn(new MoneyAmount(100));
+
+        testCashier.addAmount(tempCard, new MoneyAmount(100));
+
+        Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 100);
+    }
 }
