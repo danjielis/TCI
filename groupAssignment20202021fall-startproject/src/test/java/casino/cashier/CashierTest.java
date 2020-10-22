@@ -26,10 +26,19 @@ public class CashierTest {
         Cashier testCashier = new Cashier(loggingAuthority);
         IGamblerCard tempCard = testCashier.distributeGamblerCard();
 
-        System.out.println(tempCard.getCardID());
-
         Assert.assertTrue(testCashier.checkCardIsValid(tempCard));
         verify(loggingAuthority).logHandOutGamblingCard(tempCard.getCardID());
+    }
+
+    @Test
+    public void CashierCanRetrieveGamblerCardAndInformBetLoggingAuthority()
+    {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        IGamblerCard tempCard = testCashier.distributeGamblerCard();
+        testCashier.returnGamblerCard(tempCard);
+
+        Assert.assertFalse(testCashier.checkCardIsValid(tempCard));
+        verify(loggingAuthority).logHandInGamblingCard(tempCard.getCardID(), tempCard.returnBetIDs());
     }
 
 }
