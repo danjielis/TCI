@@ -26,7 +26,8 @@ public class Cashier implements ICashier {
      * @return
      */
     @Override
-    public IGamblerCard distributeGamblerCard() {
+    public IGamblerCard distributeGamblerCard()
+    {
 
         IGamblerCard card = new GamblerCard();
         cardList.add(card);
@@ -46,8 +47,10 @@ public class Cashier implements ICashier {
      * @param card
      */
     @Override
-    public void returnGamblerCard(IGamblerCard card) {
-
+    public void returnGamblerCard(IGamblerCard card)
+    {
+        cardList.remove(card);
+        loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDs());
     }
 
     /**

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.cashier.CashierTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T19:17:37" hostname="LAPTOP-1J11B0F5" time="1.939">
+  <properties/>
+  <testcase name="CashierCanRetrieveGamblerCardAndInformBetLoggingAuthority" classname="casino.cashier.CashierTest" time="1.939"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
