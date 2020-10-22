@@ -38,7 +38,7 @@ public class CashierTest {
         testCashier.returnGamblerCard(tempCard);
 
         Assert.assertFalse(testCashier.checkCardIsValid(tempCard));
-        verify(loggingAuthority).logHandInGamblingCard(tempCard.getCardID(), tempCard.returnBetIDs());
+        verify(loggingAuthority).logHandInGamblingCard(tempCard.getCardID(), tempCard.returnBetIDsAndClearCard());
     }
 
 }

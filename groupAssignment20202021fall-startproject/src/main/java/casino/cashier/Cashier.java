@@ -50,7 +50,7 @@ public class Cashier implements ICashier {
     public void returnGamblerCard(IGamblerCard card)
     {
         cardList.remove(card);
-        loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDs());
+        loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
     }
 
     /**
