@@ -43,12 +43,21 @@ public class CashierTest {
     }
 
     @Test
-    public void CashierCanAddMoneyBalance() throws InvalidAmountException {
+    public void CashierCanAddMoneyBalance() throws InvalidAmountException
+    {
         Cashier testCashier = new Cashier(loggingAuthority);
         IGamblerCard tempCard = testCashier.distributeGamblerCard();
         testCashier.addAmount(tempCard, new MoneyAmount(100));
 
         Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 100);
+    }
+
+    @Test
+    public void CashierCannotAddInvalidAmount() throws InvalidAmountException
+    {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        IGamblerCard tempCard = testCashier.distributeGamblerCard();
+        testCashier.addAmount(tempCard, new MoneyAmount(-100));
     }
 
 }
