@@ -22,11 +22,13 @@ public class IDFactory {
      * @return an instance of the correct GeneralID object type, or null otherwise.
      */
     public static GeneralID generateID(String idType){
-        return null; // TODO replace by correct code after creating tests first.
+        switch(idType)
+        {
+            case "CardID":
+                return new CardID();
+            case "BetID":
+                return new BetID();
+        }
+        return null;
     };
-
-
-
-
-
 }
