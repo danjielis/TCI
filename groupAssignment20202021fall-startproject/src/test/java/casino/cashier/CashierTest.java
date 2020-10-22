@@ -73,7 +73,8 @@ public class CashierTest {
     }
 
     @Test
-    public void CashierCanValidateBet() throws BetNotExceptedException {
+    public void CashierCanValidateBet() throws BetNotExceptedException
+    {
         Cashier testCashier = new Cashier(loggingAuthority);
         GamblerCard tempCard = mock(GamblerCard.class);
         Bet testBet = mock(Bet.class);
@@ -84,7 +85,8 @@ public class CashierTest {
     }
 
     @Test (expected = BetNotExceptedException.class)
-    public void CashierCannotValidateInvalidBet() throws BetNotExceptedException {
+    public void CashierCannotValidateInvalidBet() throws BetNotExceptedException
+    {
         Cashier testCashier = new Cashier(loggingAuthority);
         GamblerCard tempCard = mock(GamblerCard.class);
         Bet testBet = mock(Bet.class);
@@ -92,5 +94,18 @@ public class CashierTest {
         when(testBet.getMoneyAmount()).thenReturn(new MoneyAmount(100));
 
         testCashier.checkIfBetIsValid(tempCard, testBet);
+    }
+
+    @Test
+    public void CashierCanValidateBetAndBetAmountIsSubstractedFromCard() throws BetNotExceptedException, InvalidAmountException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        GamblerCard tempCard = (GamblerCard) testCashier.distributeGamblerCard();
+        testCashier.addAmount(tempCard, new MoneyAmount(150));
+        Bet testBet = mock(Bet.class);
+        when(testBet.getMoneyAmount()).thenReturn(new MoneyAmount(100));
+
+       testCashier.checkIfBetIsValid(tempCard, testBet);
+
+       Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 50);
     }
 }
