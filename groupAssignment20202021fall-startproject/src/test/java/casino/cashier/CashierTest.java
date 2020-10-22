@@ -52,7 +52,7 @@ public class CashierTest {
         Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 100);
     }
 
-    @Test
+    @Test (expected = InvalidAmountException.class)
     public void CashierCannotAddInvalidAmount() throws InvalidAmountException
     {
         Cashier testCashier = new Cashier(loggingAuthority);
