@@ -81,6 +81,16 @@ public class CashierTest {
         when(testBet.getMoneyAmount()).thenReturn(new MoneyAmount(100));
 
         Assert.assertTrue(testCashier.checkIfBetIsValid(tempCard, testBet));
+    }
 
+    @Test (expected = BetNotExceptedException.class)
+    public void CashierCannotValidateInvalidBet() throws BetNotExceptedException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        GamblerCard tempCard = mock(GamblerCard.class);
+        Bet testBet = mock(Bet.class);
+        when (tempCard.getBalance()).thenReturn(new MoneyAmount(50));
+        when(testBet.getMoneyAmount()).thenReturn(new MoneyAmount(100));
+
+        testCashier.checkIfBetIsValid(tempCard, testBet);
     }
 }
