@@ -2,6 +2,7 @@ package casino.cashier;
 
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,10 +10,16 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 
 public class CardIDTest {
 
+    private IDFactory testFactory;
+
+    @Before
+    public void setUp() {
+        this.testFactory = new IDFactory();
+    }
+
+
     @Test
     public void IDFactoryCanCreateCardID() {
-        IDFactory testFactory = new IDFactory();
-
         GeneralID temp = testFactory.generateID("IDCard");
 
         assertThat(temp, instanceOf(CardID.class));
@@ -20,8 +27,6 @@ public class CardIDTest {
 
     @Test
     public void ShouldHaveUniqueIdentification() {
-        IDFactory testFactory = new IDFactory();
-
         GeneralID temp = testFactory.generateID("IDCard");
         GeneralID temp1 = testFactory.generateID("IDCard");
 
@@ -30,8 +35,6 @@ public class CardIDTest {
 
     @Test
     public void ShouldHaveDifferentTimestamps() throws InterruptedException {
-        IDFactory testFactory = new IDFactory();
-
         GeneralID temp = testFactory.generateID("IDCard");
         Thread.sleep(1000);
         GeneralID temp1 = testFactory.generateID("IDCard");
