@@ -1,4 +1,5 @@
 import casino.bet.BetID;
+import casino.cashier.CardID;
 import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
 import casino.idfactory.IDFactory;
@@ -11,7 +12,7 @@ import java.util.Set;
 
 public class GamblerCardTest {
 
-    private CardID cardID= IDFactory.generateID("CardID");
+    private CardID cardID= (CardID) IDFactory.generateID("CardID");
     private IGamblerCard gamblerCard=new GamblerCard();
     private Set<BetID> setOfBetID=new HashSet<BetID>();
 
