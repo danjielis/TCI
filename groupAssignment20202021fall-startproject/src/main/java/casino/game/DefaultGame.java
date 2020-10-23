@@ -1,5 +1,7 @@
 package casino.game;
 import casino.bet.Bet;
+import casino.bet.BetResult;
+import casino.cashier.Cashier;
 import casino.cashier.ICashier;
 import casino.gamingmachine.IGamingMachine;
 import casino.idfactory.BettingRoundID;
@@ -21,6 +23,7 @@ public class DefaultGame extends AbstractGame {
         this.loggingAuthority=loggingAuthority;
         this.tokenAuthority=tokenAuthority;
         this.gameRule=gameRule;
+        cashier=new Cashier(loggingAuthority);
     }
 
     @Override
