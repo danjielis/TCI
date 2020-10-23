@@ -2,6 +2,7 @@ package casino.cashier;
 
 
 import casino.bet.BetID;
+import casino.idfactory.IDFactory;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +30,8 @@ public class GamblerCard implements IGamblerCard {
 
     @Override
     public BetID generateNewBetID() {
-        return null;
+        BetID newBeltID= (BetID) IDFactory.generateID("BeltID");
+        return newBeltID;
     }
 
     @Override
