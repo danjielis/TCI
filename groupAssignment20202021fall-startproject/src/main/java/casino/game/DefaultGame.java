@@ -36,7 +36,10 @@ public class DefaultGame extends AbstractGame {
 
     @Override
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
-        return false;
+        if (BettingRound==null){
+            throw  new NoCurrentRoundException();
+        }
+        return true;
     }
 
     @Override
