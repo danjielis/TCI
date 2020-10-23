@@ -1,6 +1,7 @@
 package gamblingauthoritiy;
 
 import casino.bet.Bet;
+import casino.bet.BetID;
 import casino.bet.BetResult;
 import casino.game.IBettingRound;
 import casino.idfactory.GeneralID;

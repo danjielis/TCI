@@ -13,7 +13,7 @@ import java.util.Set;
 public class GamblerCardTest {
 
     private CardID cardID= (CardID) IDFactory.generateID("CardID");
-    private IGamblerCard gamblerCard=new GamblerCard();
+    private IGamblerCard gamblerCard=new GamblerCard(cardID);
     private Set<BetID> setOfBetID=new HashSet<BetID>();
 
 
