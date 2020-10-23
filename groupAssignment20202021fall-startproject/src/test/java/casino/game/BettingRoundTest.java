@@ -1,6 +1,8 @@
 package casino.game;
 
 import casino.bet.Bet;
+import casino.bet.BetID;
+import casino.bet.MoneyAmount;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,10 +19,7 @@ public class BettingRoundTest {
         BettingRound bettingRound = new BettingRound();
         Bet bet = mock(Bet.class);
 
-        bettingRound.placeBet(bet);
-        Set<Bet> temp = bettingRound.getAllBetsMade();
-
-        Assert.assertTrue(temp.contains(bet));
+        Assert.assertTrue(bettingRound.placeBet(bet));
 
     }
 
