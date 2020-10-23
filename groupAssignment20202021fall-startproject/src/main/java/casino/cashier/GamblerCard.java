@@ -31,6 +31,7 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public BetID generateNewBetID() {
         BetID newBeltID= (BetID) IDFactory.generateID("BeltID");
+        betIDSet.add(newBeltID);
         return newBeltID;
     }
 
