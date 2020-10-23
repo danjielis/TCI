@@ -1,4 +1,4 @@
-package casino.bet;
+package casino.idfactory;
 
 import casino.idfactory.GeneralID;
 

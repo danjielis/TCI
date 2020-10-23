@@ -1,5 +1,5 @@
-import casino.bet.BetID;
-import casino.cashier.CardID;
+import casino.idfactory.BetID;
+import casino.idfactory.CardID;
 import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
 import casino.idfactory.IDFactory;

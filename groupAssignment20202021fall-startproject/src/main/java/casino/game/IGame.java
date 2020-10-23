@@ -12,7 +12,6 @@ import casino.gamingmachine.IGamingMachine;
  *
  */
 public interface IGame {
-
     /**
      * create and start a new BettingRound.
      * when called when a current bettinground is active: the current bettinground ends and a new
@@ -36,8 +35,6 @@ public interface IGame {
      * @throws NoCurrentRoundException when no BettingRound is currently active.
      */
     boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException;
-
-
     /**
      * End the current bettinground & calculate the winner using the gamerules.
      * notifiy all connected game machines of the BetResult.

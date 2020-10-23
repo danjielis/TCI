@@ -1,4 +1,4 @@
-package casino.cashier;
+package casino.idfactory;
 
 import casino.idfactory.GeneralID;
 
