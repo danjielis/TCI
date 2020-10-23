@@ -46,8 +46,12 @@ public class DefaultGame extends AbstractGame {
     }
 
     @Override
-    public void determineWinner() {
-
+    public void determineWinner()throws NoBetsMadeException {
+        BetToken token = this.BettingRound.getBetToken();
+        Integer random = this.tokenAuthority.getRandomInteger(token);
+        BetResult result = this.gameRule.determineWinner(random, this.BettingRound.getAllBetsMade());
+        this.loggingAuthority.logEndBettingRound(this.BettingRound, result);
+        this.BettingRound = null;
     }
 
     @Override

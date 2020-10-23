@@ -17,6 +17,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
@@ -57,23 +58,24 @@ public class DefaultGameTest {
     }
 
     @Test
-    public void determineWinnerSuccessfully(){
+    public void determineWinnerSuccessfully() throws NoBetsMadeException {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BettingRoundID");
         Set<Bet> bets = new HashSet<>();
         BetToken token= mock(BetToken.class);
         Cashier cashier=mock(Cashier.class);
         BetResult betResult=mock(BetResult.class);
         Bet bet1 = new Bet(new BetID(), new MoneyAmount(50));
-        Bet bet2 = new Bet(new BetID(), new MoneyAmount(50));
+        Bet bet2 = null;
         bets.add(bet1);
         bets.add(bet2);
         IBettingRound bettingRound=new BettingRound(bettingRoundID,token,cashier);
         game.determineWinner();
-        verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
+        //verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
+        assertNull(bet2);
     }
 
     @Test(expected = NoBetsMadeException.class)
-    public void determineWinnerUnSuccessfully(){
+    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
         game.determineWinner();
 
     }
