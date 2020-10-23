@@ -12,6 +12,7 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BettingRoundTest {
 
@@ -29,6 +30,14 @@ public class BettingRoundTest {
 
         Assert.assertTrue(bettingRound.placeBet(bet));
 
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void BettingRoundCannotPlaceANullBet()
+    {
+        BettingRound bettingRound = new BettingRound();
+
+        bettingRound.placeBet(null);
     }
 
 }
