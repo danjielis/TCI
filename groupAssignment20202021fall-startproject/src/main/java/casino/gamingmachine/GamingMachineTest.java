@@ -46,6 +46,15 @@ public class GamingMachineTest {
         machine.placeBet(1000);
     }
 
+    /*
+    Initial approach to testing was that since there is no implementation and TDD cycle should be followed,
+    it is better to direct immutable objects, and attempt to mock those that are harder to get around with.
 
+    First branch with at least three tests per SUTs, was merged, and anticipating every team member doing same,
+    now is possible to direct the more difficult ones, ensuring that nothing is left behind.
+
+    However convenient mocking is, it is applicable best to functionalities that lie outside of the container,
+    and since here in casino we have only one container, it only seems reasonable to fully check with directs.
+     */
 
 }
