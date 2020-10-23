@@ -102,6 +102,10 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public boolean placeBet(Bet bet) throws IllegalArgumentException {
+        if (bet == null)
+        {
+            throw new IllegalArgumentException();
+        }
         bets.add(bet);
         return true;
     }
