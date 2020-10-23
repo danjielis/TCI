@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.gitignore
+.idea/modules/
+groupAssignment20202021fall-startproject/.gradle/6.1.1/fileContent/
+groupAssignment20202021fall-startproject/.gradle/6.1.1/javaCompile/
+groupAssignment20202021fall-startproject/.gradle/6.1.1/vcsMetadata-1/
+groupAssignment20202021fall-startproject/build/
