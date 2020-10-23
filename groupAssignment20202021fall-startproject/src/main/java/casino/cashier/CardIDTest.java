@@ -29,10 +29,11 @@ public class CardIDTest {
     }
 
     @Test
-    public void ShouldHaveDifferentTimestamps() {
+    public void ShouldHaveDifferentTimestamps() throws InterruptedException {
         IDFactory testFactory = new IDFactory();
 
         GeneralID temp = testFactory.generateID("IDCard");
+        Thread.sleep(1000);
         GeneralID temp1 = testFactory.generateID("IDCard");
 
         assertNotEquals(temp.getTimeStamp(), temp1.getTimeStamp());
