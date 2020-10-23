@@ -37,11 +37,11 @@ public class GamblerCard implements IGamblerCard {
 
     @Override
     public int getNumberOfBetIDs() {
-        return 0;
+        return betIDSet.size();
     }
 
     @Override
     public CardID getCardID() {
-        return null;
+        return cardID;
     }
 }
