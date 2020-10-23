@@ -7,6 +7,7 @@ import casino.idfactory.IDFactory;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class GamblerCard implements IGamblerCard {
 
     private CardID cardID;

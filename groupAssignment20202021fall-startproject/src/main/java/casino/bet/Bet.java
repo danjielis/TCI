@@ -1,5 +1,6 @@
 package casino.bet;
 
+
 /**
  * immutable class.
  * keeps unique betID and moneyamount in the bet.

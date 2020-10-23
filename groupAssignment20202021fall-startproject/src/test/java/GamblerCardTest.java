@@ -19,10 +19,11 @@ public class GamblerCardTest {
 
     /**
      * GamblerCard can return set of BetID
+     * returnBetIDs Method
      */
     @Test
     public void GamblerCardCanReturnSetOfBetID(){
-        BetID betID=gamblerCard.generateNewBetID();
+        BetID betID= gamblerCard.generateNewBetID();
         setOfBetID.add(betID);
         //assert
         assertThat(setOfBetID,is(gamblerCard.returnBetIDs()));
@@ -30,6 +31,7 @@ public class GamblerCardTest {
 
     /**
      *GamblerCard can return all betIDs associated to the card and clears all betIDs
+     * getNumberOfBetIDs Method
      */
     @Test
     public void GamblerReturnBetIDAndClearCard(){
@@ -40,6 +42,7 @@ public class GamblerCardTest {
 
     /**
      * GamblerCard will generate new bet ID and add it to set of BetID
+     * generateNewBetID Method
      */
     @Test
     public void GenerateNewBetID(){
@@ -50,6 +53,7 @@ public class GamblerCardTest {
 
     /**
      *Return the number of Bet id in the gambler card
+     * getNumberOfBetIDs Method
      */
     public void ReturnNumberOfBetID(){
         assertThat(gamblerCard.getNumberOfBetIDs(),equalTo(0));
@@ -57,6 +61,7 @@ public class GamblerCardTest {
 
     /**
      *return the gambler card id
+     * getCardID Method
      */
     @Test
     public void GetGamblerCardID(){
