@@ -56,6 +56,10 @@ public class DefaultGame extends AbstractGame {
 
     @Override
     public boolean isBettingRoundFinished() {
+        if (this.BettingRound.numberOFBetsMade() == this.gameRule.getMaxBetsPerRound()) {
+            return true;
+        }
+
         return false;
     }
 }
