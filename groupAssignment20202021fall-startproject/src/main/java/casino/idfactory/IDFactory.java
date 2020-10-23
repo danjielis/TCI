@@ -28,17 +28,17 @@ public class IDFactory {
      */
     public static GeneralID generateID(String idType){
         switch (idType) {
-            case "betID":
+            case "IDBet":
                 return new BetID();
-            case "bettingRoundID":
+            case "IDBettingRound":
                 return new BettingRoundID();
-            case "cardID":
+            case "IDCard":
                 return new CardID();
-            case "gamingMachineID":
+            case "IDGamingMachine":
                 return new GamingMachineID();
         }
         return null;
-    };
+    }
 
 
 

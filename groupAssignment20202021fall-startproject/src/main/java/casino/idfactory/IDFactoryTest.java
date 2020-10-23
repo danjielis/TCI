@@ -17,28 +17,28 @@ public class IDFactoryTest {
 
     @Test
     public void ShouldCreateTypeBetID() {
-        BetID betID = (BetID) IDfactory.generateID("betID");
+        BetID betID = (BetID) IDfactory.generateID("IDBet");
 
         assertThat(betID, instanceOf(GeneralID.class));
     }
 
     @Test
     public void ShouldCreateTypeBettingRoundID() {
-        BettingRoundID bettingRoundID = (BettingRoundID) IDfactory.generateID("bettingRoundID");
+        BettingRoundID bettingRoundID = (BettingRoundID) IDfactory.generateID("IDBettingRound");
 
         assertThat(bettingRoundID, instanceOf(GeneralID.class));
     }
 
     @Test
     public void ShouldCreateTypeCardID() {
-        CardID cardID = (CardID) IDfactory.generateID("cardID");
+        CardID cardID = (CardID) IDfactory.generateID("IDCard");
 
         assertThat(cardID, instanceOf(GeneralID.class));
     }
 
     @Test
     public void ShouldCreateTypeGamingMachineID() {
-        GamingMachineID gamingMachineID = (GamingMachineID) IDfactory.generateID("gamingMachineID");
+        GamingMachineID gamingMachineID = (GamingMachineID) IDfactory.generateID("IDGamingMachine");
 
         assertThat(gamingMachineID, instanceOf(GeneralID.class));
     }
