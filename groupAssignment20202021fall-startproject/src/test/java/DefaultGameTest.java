@@ -11,23 +11,22 @@ import casino.gamingmachine.NoPlayerCardException;
 import casino.idfactory.BetID;
 import casino.idfactory.BettingRoundID;
 import casino.idfactory.IDFactory;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import gamblingauthoritiy.*;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class DefaultGameTest {
     private GameRule gameRule = mock(GameRule.class);
     private IBetTokenAuthority betTokenAuthority = mock(IBetTokenAuthority.class);
     private IBetLoggingAuthority betLoggingAuthority= mock(gamblingauthoritiy.IBetLoggingAuthority.class);
-    DefaultGame game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
     private IGamingMachine gamingMachine = mock(IGamingMachine.class);
-    MoneyAmount moneyAmount = mock(MoneyAmount.class);
+    DefaultGame game;
 
 
     /**
@@ -57,6 +56,7 @@ public class DefaultGameTest {
         game.acceptBet(bet,gamingMachine);
     }
 
+    /*
     @Test
     public void determineWinnerSuccessfully() throws NoBetsMadeException {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BettingRoundID");
@@ -76,17 +76,22 @@ public class DefaultGameTest {
 
     @Test(expected = NoBetsMadeException.class)
     public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
-        game.determineWinner();
-
     }
+    */
 
     @Test
-    public void CheckIfBettingRoundFinished(){
+    public void CheckIfBettingRoundFinished() throws NoCurrentRoundException {
+        game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
+        Bet bet=new Bet(new BetID(),new MoneyAmount(1));
+        game.startBettingRound();
 
+        game.acceptBet(bet,gamingMachine);
+        boolean result= game.isBettingRoundFinished();
+        assertTrue(result);
     }
 
 
 
 
 
-    }
+}
