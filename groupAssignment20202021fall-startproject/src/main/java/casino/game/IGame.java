@@ -1,6 +1,7 @@
 package casino.game;
 
 import casino.bet.Bet;
+import casino.cashier.BetNotExceptedException;
 import casino.gamingmachine.IGamingMachine;
 
 /**
@@ -46,7 +47,7 @@ public interface IGame {
      *
      * Note: also use the appropiate required methods from the gambling authority API
      */
-    void determineWinner();
+    void determineWinner() throws NoBetsMadeException;
 
     /**
      * determine if the right number of bets are done (determined by gamerules) to be able to
@@ -56,7 +57,7 @@ public interface IGame {
      *
      * @return true if all necessary bets are made in the betting round, otherwise false
      */
-    boolean isBettingRoundFinished();
+    boolean isBettingRoundFinished() throws NoBetsMadeException, BetNotExceptedException;
 
 
 

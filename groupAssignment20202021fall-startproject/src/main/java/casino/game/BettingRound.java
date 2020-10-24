@@ -1,5 +1,6 @@
 package casino.game;
 
+import casino.cashier.ICashier;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import casino.bet.Bet;
@@ -11,47 +12,49 @@ import java.util.Set;
  *
  */
 public class BettingRound implements IBettingRound {
-    @Override
-    public BettingRoundID getBettingRoundID() {
-        return null;
+
+    private BettingRoundID bettingRoundID;
+    private BetToken betToken;
+    private ICashier cashier;
+    private Set<Bet> SetOfBets;
+
+    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken, ICashier cashier) {
+        this.bettingRoundID = bettingRoundID;
+        this.betToken = betToken;
+        this.cashier = cashier;
+        SetOfBets = new HashSet<Bet>();
     }
 
-    /**
-     * add a bet to the current bettinground.
-     * <p>
-     * <p>
-     * Note: also use the appropiate required methods from the gambling authority API
-     *
-     * @param bet
-     * @return true if bet is made, otherwise folse
-     * @throws IllegalArgumentException when Bet is null
-     */
+    public void setListOfBetsMadeByTheRound(Set<Bet> listOfBetsMadeByTheRound) {
+        this.SetOfBets = listOfBetsMadeByTheRound;
+    }
+
     @Override
-    public boolean placeBet(Bet bet) throws IllegalArgumentException {
+    public BettingRoundID getBettingRoundID() {
+        return bettingRoundID;
+    }
+
+    @Override
+    public boolean placeBet(Bet bet) {
+        if (bet.getMoneyAmount().getAmountInCents() > 0) {
+            SetOfBets.add(bet);
+            return true;
+        }
         return false;
     }
 
-    /**
-     * @return set of all bets made in this betting round.
-     */
     @Override
     public Set<Bet> getAllBetsMade() {
-        return null;
+        return SetOfBets;
     }
 
-    /**
-     * @return betToken from this betting round.
-     */
     @Override
     public BetToken getBetToken() {
-        return null;
+        return betToken;
     }
 
-    /**
-     * @return number of bets made in the betting round
-     */
     @Override
     public int numberOFBetsMade() {
-        return 0;
+        return SetOfBets.size();
     }
 }
