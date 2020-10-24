@@ -1,11 +1,11 @@
-import casino.gamingmachine.GamingMachineID;
+import casino.idfactory.GamingMachineID;
 import casino.idfactory.GeneralID;
 import casino.idfactory.IDFactory;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class GamingMachineIDTest {
 
