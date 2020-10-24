@@ -6,6 +6,11 @@ import casino.cashier.IGamblerCard;
 
 public class GamingMachine implements IGamingMachine {
 
+<<<<<<< HEAD
+=======
+    private IGamblerCard connectedCard;
+
+>>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     /**
      * try to place bet with given amount and connected card.
      * amount needs to be checked with the cashier
@@ -17,6 +22,11 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public boolean placeBet(long amountInCents) throws NoPlayerCardException {
+<<<<<<< HEAD
+=======
+        if (this.connectedCard == null) { throw new NoPlayerCardException(); }
+
+>>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
         return false;
     }
 
@@ -49,7 +59,11 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void connectCard(IGamblerCard card) {
+<<<<<<< HEAD
 
+=======
+        this.connectedCard = card;
+>>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 
     /**
@@ -60,6 +74,14 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
+<<<<<<< HEAD
 
+=======
+        this.connectedCard = null;
+    }
+
+    public IGamblerCard getConnectedCard() {
+        return this.connectedCard;
+>>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 }

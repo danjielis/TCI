@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="DefaultGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-24T12:43:24" hostname="LAPTOP-BS0SDQM8" time="0.021">
+  <properties/>
+  <testcase name="determineWinnerSuccessfully" classname="DefaultGameTest" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
