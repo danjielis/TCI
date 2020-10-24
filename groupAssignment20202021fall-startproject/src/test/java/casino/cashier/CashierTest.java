@@ -1,7 +1,13 @@
 package casino.cashier;
 
 import casino.bet.Bet;
+import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.game.BettingRound;
+import casino.game.BettingRoundID;
+import casino.gamingmachine.GamingMachine;
+import casino.gamingmachine.NoPlayerCardException;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;
 import org.junit.Before;
@@ -22,15 +28,15 @@ public class CashierTest {
     }
 
 
-//    @Test
-//    public void CashierCanHandGamblerCardAndTrackGamblerCardsAndInformBetLoggingAuthority()
-//    {
-//        Cashier testCashier = new Cashier(loggingAuthority);
-//        IGamblerCard tempCard = testCashier.distributeGamblerCard();
-//
-//        Assert.assertTrue(testCashier.checkCardIsValid(tempCard));
-//        verify(loggingAuthority).logHandOutGamblingCard(tempCard.getCardID());
-//    }
+    @Test
+    public void CashierCanHandGamblerCardAndTrackGamblerCardsAndInformBetLoggingAuthority()
+    {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        IGamblerCard tempCard = testCashier.distributeGamblerCard();
+
+        Assert.assertTrue(testCashier.checkCardIsValid(tempCard));
+        verify(loggingAuthority).logHandOutGamblingCard(tempCard.getCardID());
+    }
 
     @Test
     public void CashierCanRetrieveGamblerCardAndInformBetLoggingAuthority()
@@ -107,5 +113,22 @@ public class CashierTest {
        testCashier.checkIfBetIsValid(tempCard, testBet);
 
        Assert.assertEquals(tempCard.getBalance().getAmountInCents(), 50);
+    }
+
+    @Test
+    public void CashierCanAddWinnerMoneyAmount() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Cashier testCashier = new Cashier(loggingAuthority);
+        BetToken testBetToken = mock(BetToken.class);
+        BettingRound testBettingRound = new BettingRound(new BettingRoundID(), testBetToken, testCashier);
+        GamblerCard card = new GamblerCard();
+        testCashier.addAmount(card, new MoneyAmount(100));
+        GamingMachine testGamingMachine = new GamingMachine(testCashier, testBettingRound);
+        testGamingMachine.connectCard(card);
+        testGamingMachine.placeBet(100);
+        List<Bet> tempbetList = testGamingMachine.getBets();
+
+        BetResult testBetResult = new BetResult(tempbetList.get(0), new MoneyAmount(100));
+        testGamingMachine.acceptWinner(testBetResult);
+        Assert.assertEquals(card.getBalance().getAmountInCents(), 200);
     }
 }
