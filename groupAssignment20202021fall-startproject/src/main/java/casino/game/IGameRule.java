@@ -2,6 +2,7 @@ package casino.game;
 
 import casino.bet.Bet;
 import casino.bet.BetResult;
+import casino.cashier.BetNotExceptedException;
 
 import java.util.Set;
 
@@ -27,6 +28,6 @@ public interface IGameRule {
      *
      * @return
      */
-    int getMaxBetsPerRound();
+    int getMaxBetsPerRound() throws BetNotExceptedException;
 
 }

@@ -3,12 +3,15 @@ package casino.game;
 import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
+import casino.cashier.BetNotExceptedException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class GameRule implements IGameRule {
+
+    private int maxBetPerRound;
     /**
      * Determine the winner from a Set of Bets, using a given random win value;
      *
@@ -40,7 +43,14 @@ public class GameRule implements IGameRule {
      * @return
      */
     @Override
-    public int getMaxBetsPerRound() {
-        return 5;
+    public int getMaxBetsPerRound() throws BetNotExceptedException {
+        if (maxBetPerRound>0){
+            return maxBetPerRound;
+        }
+        throw new BetNotExceptedException();
+    }
+
+    public int setMaxBetPerRound(int num) {
+        return maxBetPerRound = num;
     }
 }

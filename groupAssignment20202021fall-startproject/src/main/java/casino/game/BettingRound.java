@@ -48,6 +48,6 @@ public class BettingRound implements IBettingRound {
 
     @Override
     public int numberOFBetsMade() {
-        return 0;
+        return SetOfBets.size();
     }
 }

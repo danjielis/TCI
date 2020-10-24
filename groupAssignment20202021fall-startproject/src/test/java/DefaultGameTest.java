@@ -1,17 +1,13 @@
 import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
-import casino.cashier.Cashier;
-import casino.cashier.GamblerCard;
-import casino.cashier.ICashier;
-import casino.cashier.IGamblerCard;
+import casino.cashier.*;
 import casino.game.*;
 import casino.gamingmachine.IGamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import casino.idfactory.BetID;
 import casino.idfactory.BettingRoundID;
 import casino.idfactory.IDFactory;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import gamblingauthoritiy.*;
 import org.junit.Test;
 
@@ -80,14 +76,26 @@ public class DefaultGameTest {
     */
 
     @Test
-    public void CheckIfBettingRoundFinished() throws NoCurrentRoundException {
+    public void CheckIfBettingRoundFinishedSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
         game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
-        Bet bet=new Bet(new BetID(),new MoneyAmount(1));
+        Bet bet=new Bet(new BetID(),new MoneyAmount(11));
+        gameRule.setMaxBetPerRound(1);
         game.startBettingRound();
-
         game.acceptBet(bet,gamingMachine);
         boolean result= game.isBettingRoundFinished();
         assertTrue(result);
+    }
+
+    @Test
+    public void CheckIfBettingRoundFinishedUnSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
+        game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
+        Bet bet=new Bet(new BetID(),new MoneyAmount(1));
+        gameRule.setMaxBetPerRound(2);
+        game.startBettingRound();
+        game.acceptBet(bet,gamingMachine);
+        boolean result=game.isBettingRoundFinished();
+        assertTrue(result);
+
     }
 
 
