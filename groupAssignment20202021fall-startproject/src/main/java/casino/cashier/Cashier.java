@@ -18,8 +18,8 @@ public class Cashier implements ICashier {
 
     /**
      * Cards are distributed by a Cashier to a gambler
-     * bankteller keeps track of which cards are handed out.
-     * Note: also use the appropiate required methods from the gambling authority API
+     * bank teller keeps track of which cards are handed out.
+     * Note: also use the appropriate required methods from the gambling authority API
      *
      * @return
      */
@@ -39,7 +39,7 @@ public class Cashier implements ICashier {
      * The total amount of money credit is physically handed to the gambler,
      * and the amount stored on the card is changed to zero.
      * The stored betID’s on the card are also removed.
-     * Note: also use the appropiate required methods from the gambling authority API
+     * Note: also use the appropriate required methods from the gambling authority API
      *
      * @param card
      */
@@ -51,7 +51,7 @@ public class Cashier implements ICashier {
     }
 
     /**
-     * check if Bet made with the playercard is possible. this is based on the amount related
+     * check if Bet made with the player card is possible. this is based on the amount related
      * to the card, and the amount made in the bet.
      * <p>
      * if the bet is valid, the amount of the bet is subtracted from the amount belonging to

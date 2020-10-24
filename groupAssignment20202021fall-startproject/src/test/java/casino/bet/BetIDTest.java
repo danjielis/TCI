@@ -13,6 +13,10 @@ import static org.mockito.Mockito.*;
 
 public class BetIDTest {
 
+    /**
+     * Test if the IDFactory can create a BetID object
+     * Created by Student A: Yoanna Borisova
+     */
     @Test
     public void IDFactoryCanCreateBetID()
     {

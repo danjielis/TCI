@@ -12,6 +12,12 @@ import static org.mockito.Mockito.mock;
 
 public class AbstractGameTest {
 
+    /**
+     * Test if the abstract game can be constructed using a BettingAuhtority,
+     * initializes a list of gamingMachines, a GameRule and a BettingRound.
+     * The BettingRound must also be started inside the constructor
+     * Created by Student A: Yoanna Borisova
+     */
     @Test
     public void AbstractGameCanBeConstructed()
     {

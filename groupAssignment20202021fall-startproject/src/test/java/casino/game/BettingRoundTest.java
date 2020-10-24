@@ -23,6 +23,10 @@ public class BettingRoundTest {
         this.bet = mock(Bet.class);
     }
 
+    /**
+     * Test if the betting round can place a bet inside a betting round
+     * Created by Student A: Yoanna Borisova
+     */
     @Test
     public void BettingRoundCanPlaceABet()
     {
@@ -32,6 +36,10 @@ public class BettingRoundTest {
 
     }
 
+    /**
+     * Test if the betting round cannot place a bet if the bet is null
+     * Created by Student A: Yoanna Borisova
+     */
     @Test (expected = IllegalArgumentException.class)
     public void BettingRoundCannotPlaceANullBet()
     {
