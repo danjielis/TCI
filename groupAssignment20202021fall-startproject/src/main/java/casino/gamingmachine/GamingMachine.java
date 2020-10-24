@@ -8,6 +8,7 @@ import casino.bet.MoneyAmount;
 import casino.cashier.BetNotExceptedException;
 import casino.cashier.Cashier;
 import casino.cashier.IGamblerCard;
+import casino.cashier.InvalidAmountException;
 import casino.game.BettingRound;
 import casino.idfactory.IDFactory;
 
@@ -64,8 +65,12 @@ public class GamingMachine implements IGamingMachine {
      * @param winResult result of a betting round. can be null when there is no winner.
      */
     @Override
-    public void acceptWinner(BetResult winResult) {
-
+    public void acceptWinner(BetResult winResult) throws InvalidAmountException {
+        for(Bet b:bets) {
+            if (winResult.getWinningBet().getBetID() == b.getBetID())
+                this.cashier.addAmount(this.connectedCard, winResult.getAmountWon());
+        }
+        bets.clear();
     }
 
     /**
@@ -106,4 +111,6 @@ public class GamingMachine implements IGamingMachine {
     public IGamblerCard getConnectedCard() {
         return this.connectedCard;
     }
+
+    public List<Bet> getBets() { return this.bets; }
 }
