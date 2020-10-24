@@ -68,6 +68,14 @@ public class GamblerCardTest {
      */
     @Test
     public void GetGamblerCardID(){
+        gamblerCard=new GamblerCard(cardID);
         assertEquals(gamblerCard.getCardID(),cardID);
+    }
+
+    @Test
+    public void GamblerCardShouldGetMoney(){
+        MoneyAmount moneyAmount=new MoneyAmount(10);
+        gamblerCard.setBalance(moneyAmount);
+        assertEquals(gamblerCard.getBalance(),moneyAmount);
     }
 }
