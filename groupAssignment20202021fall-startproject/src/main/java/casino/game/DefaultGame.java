@@ -42,13 +42,16 @@ public class DefaultGame extends AbstractGame {
     @Override
     public boolean acceptBet(Bet bet, IGamingMachine gamingMachine) throws NoCurrentRoundException {
         if (BettingRound==null){
-            throw  new NoCurrentRoundException();
+            throw new NoCurrentRoundException();
         }
+
         return true;
     }
 
     @Override
     public void determineWinner()throws NoBetsMadeException {
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("bettingRoundID");
+        BettingRound=new BettingRound(bettingRoundID,betToken,cashier);
         BetToken token = this.BettingRound.getBetToken();
         Integer random = this.tokenAuthority.getRandomInteger(token);
         BetResult result = this.gameRule.determineWinner(random, this.BettingRound.getAllBetsMade());

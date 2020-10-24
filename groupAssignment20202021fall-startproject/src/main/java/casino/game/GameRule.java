@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class GameRule implements IGameRule {
 
-    private int maxBetPerRound;
+    public static int maxBetPerRound;
     /**
      * Determine the winner from a Set of Bets, using a given random win value;
      *

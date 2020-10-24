@@ -17,6 +17,14 @@ public abstract class GeneralID {
         this.timeStamp = Instant.now();
     }
 
+    public UUID getUniqueID() {
+        return uniqueID;
+    }
+
+    public Instant getTimeStamp() {
+        return timeStamp;
+    }
+
     // TODO: implement necessary code. Add WHY you need it.
 
 }

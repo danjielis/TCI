@@ -22,7 +22,7 @@ public class DefaultGameTest {
     private IBetTokenAuthority betTokenAuthority = mock(IBetTokenAuthority.class);
     private IBetLoggingAuthority betLoggingAuthority= mock(gamblingauthoritiy.IBetLoggingAuthority.class);
     private IGamingMachine gamingMachine = mock(IGamingMachine.class);
-    DefaultGame game;
+    private DefaultGame game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
 
 
     /**
@@ -52,7 +52,7 @@ public class DefaultGameTest {
         game.acceptBet(bet,gamingMachine);
     }
 
-    /*
+
     @Test
     public void determineWinnerSuccessfully() throws NoBetsMadeException {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BettingRoundID");
@@ -66,18 +66,12 @@ public class DefaultGameTest {
         bets.add(bet2);
         IBettingRound bettingRound=new BettingRound(bettingRoundID,token,cashier);
         game.determineWinner();
-        //verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
-        assertNull(bet2);
+        verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
     }
 
-    @Test(expected = NoBetsMadeException.class)
-    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
-    }
-    */
 
     @Test
     public void CheckIfBettingRoundFinishedSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
-        game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
         Bet bet=new Bet(new BetID(),new MoneyAmount(11));
         gameRule.setMaxBetPerRound(1);
         game.startBettingRound();
@@ -88,7 +82,6 @@ public class DefaultGameTest {
 
     @Test
     public void CheckIfBettingRoundFinishedUnSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
-        game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
         Bet bet=new Bet(new BetID(),new MoneyAmount(1));
         gameRule.setMaxBetPerRound(2);
         game.startBettingRound();
