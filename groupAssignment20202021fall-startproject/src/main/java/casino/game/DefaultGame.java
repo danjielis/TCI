@@ -48,6 +48,8 @@ public class DefaultGame extends AbstractGame {
         return true;
     }
 
+
+
     @Override
     public void determineWinner()throws NoBetsMadeException {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("bettingRoundID");
@@ -68,5 +70,11 @@ public class DefaultGame extends AbstractGame {
         }
 
         return false;
+    }
+    public void setBettingRound(IBettingRound bettingRound) {
+        BettingRound = bettingRound;
+    }
+    public IBettingRound getBettingRound() {
+        return BettingRound;
     }
 }

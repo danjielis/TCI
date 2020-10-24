@@ -23,7 +23,7 @@ public class DefaultGameTest {
     private IBetLoggingAuthority betLoggingAuthority= mock(gamblingauthoritiy.IBetLoggingAuthority.class);
     private IGamingMachine gamingMachine = mock(IGamingMachine.class);
     private DefaultGame game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
-
+    private MoneyAmount moneyAmount ;
 
     /**
      * Check if the new bettingRound starts
@@ -40,8 +40,8 @@ public class DefaultGameTest {
      */
     @Test
     public void acceptBetSuccessfully() throws NoCurrentRoundException {
+        moneyAmount=new MoneyAmount(1);
         game.startBettingRound();
-        MoneyAmount moneyAmount = mock(MoneyAmount.class);
         Bet bet=new Bet(new BetID(),moneyAmount);
         assertTrue(game.acceptBet(bet, gamingMachine));
     }
@@ -55,18 +55,20 @@ public class DefaultGameTest {
 
     @Test
     public void determineWinnerSuccessfully() throws NoBetsMadeException {
-        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("BettingRoundID");
-        Set<Bet> bets = new HashSet<>();
-        BetToken token= mock(BetToken.class);
-        Cashier cashier=mock(Cashier.class);
-        BetResult betResult=mock(BetResult.class);
-        Bet bet1 = new Bet(new BetID(), new MoneyAmount(50));
-        Bet bet2 = null;
-        bets.add(bet1);
-        bets.add(bet2);
-        IBettingRound bettingRound=new BettingRound(bettingRoundID,token,cashier);
         game.determineWinner();
-        verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
+        //verify(betLoggingAuthority).logEndBettingRound(bettingRound,betResult);
+        assertNull(game.getBettingRound());
+    }
+
+    @Test(expected = NoBetsMadeException.class)
+    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
+        Set<Bet> bets = new HashSet<>();
+        moneyAmount=new MoneyAmount(1);
+        Bet bet1=new Bet(new BetID(),moneyAmount);
+        bets.add(bet1);
+        IBettingRound bettingRound=null;
+        game.setBettingRound(bettingRound);
+        gameRule.determineWinner(1,bets);
     }
 
 
