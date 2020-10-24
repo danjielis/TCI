@@ -3,6 +3,7 @@ package casino.gamingmachine;
 import casino.bet.BetResult;
 import casino.cashier.BetNotExceptedException;
 import casino.cashier.IGamblerCard;
+import casino.cashier.InvalidAmountException;
 
 /**
  * Described a gaming machine. a machine has a gamingmachineID,
@@ -29,7 +30,7 @@ public interface IGamingMachine {
      *
      * @param winResult result of a betting round. can be null when there is no winner.
      */
-    void acceptWinner(BetResult winResult);
+    void acceptWinner(BetResult winResult) throws InvalidAmountException;
 
     /**
      * getter

@@ -5,15 +5,18 @@ import casino.bet.BetID;
 import casino.bet.MoneyAmount;
 import casino.idfactory.IDFactory;
 import javax.smartcardio.Card;
+import java.util.HashSet;
 import java.util.Set;
 
 public class GamblerCard implements IGamblerCard {
 
     final private CardID id;
     private MoneyAmount balance;
+    private Set<BetID> betIDSet=new HashSet<BetID>();
+
     public GamblerCard()
     {
-        this.id = (CardID) IDFactory.generateID("CardID");
+        this.id = (CardID) IDFactory.generateID("IDCard");
         balance = new MoneyAmount(0);
     }
 
@@ -24,7 +27,7 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public Set<BetID> returnBetIDs() {
-        return null;
+        return betIDSet;
     }
 
     /**
@@ -34,7 +37,9 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public Set<BetID> returnBetIDsAndClearCard() {
-        return null;
+        Set<BetID> temp=returnBetIDs();
+        betIDSet.clear();
+        return temp;
     }
 
     /**
@@ -45,7 +50,9 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public BetID generateNewBetID() {
-        return null;
+        BetID newBeltID= (BetID) IDFactory.generateID("BeltID");
+        betIDSet.add(newBeltID);
+        return newBeltID;
     }
 
     /**
@@ -55,7 +62,7 @@ public class GamblerCard implements IGamblerCard {
      */
     @Override
     public int getNumberOfBetIDs() {
-        return 0;
+        return betIDSet.size();
     }
 
     @Override

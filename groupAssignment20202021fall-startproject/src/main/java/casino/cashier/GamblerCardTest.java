@@ -46,12 +46,12 @@ public class GamblerCardTest {
      * GamblerCard will generate new bet ID and add it to set of BetID
      * generateNewBetID Method
      */
-//    @Test
-//    public void GamblerCardGenerateNewBetID(){
-//        BetID betID=gamblerCard.generateNewBetID();
-//        //assert
-//        assertTrue(gamblerCard.returnBetIDs().contains(betID));
-//    }
+    @Test
+    public void GamblerCardGenerateNewBetID(){
+        BetID betID=gamblerCard.generateNewBetID();
+        //assert
+        assertTrue(gamblerCard.returnBetIDs().contains(betID));
+    }
 
     /**
      *Return the number of Bet id in the gambler card
@@ -68,6 +68,6 @@ public class GamblerCardTest {
      */
     @Test
     public void GetGamblerCardID(){
-        assertThat(gamblerCard.getCardID(),equalTo(cardID));
+        assertEquals(gamblerCard.getCardID(),cardID);
     }
 }
