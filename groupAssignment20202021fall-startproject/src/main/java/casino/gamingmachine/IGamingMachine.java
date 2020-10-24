@@ -1,6 +1,7 @@
 package casino.gamingmachine;
 
 import casino.bet.BetResult;
+import casino.cashier.BetNotExceptedException;
 import casino.cashier.IGamblerCard;
 
 /**
@@ -19,7 +20,7 @@ public interface IGamingMachine {
      * @return true if bet is valid, excepted and added to betting round.
      * @throws NoPlayerCardException when no card is connected to this machine.
      */
-    boolean placeBet(long amountInCents) throws NoPlayerCardException;
+    boolean placeBet(long amountInCents) throws NoPlayerCardException, BetNotExceptedException;
 
     /**
      * Accept the BetResult from the winner. Clear all open bets on this machine.
@@ -40,7 +41,7 @@ public interface IGamingMachine {
      * connect card to this gaming machine
      * @param card card to connect
      */
-    public void connectCard(IGamblerCard card);
+    void connectCard(IGamblerCard card);
 
 
     /**
