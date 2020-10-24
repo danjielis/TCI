@@ -36,7 +36,7 @@ Only setting up that you might have to do, based on your IDE and Gradle setting 
 
 Refer to dependencies.
 
-#### Tests distribution
+## Tests distribution
 Student A: cashier, bettinground, abstractgame, BetID
 
 Student B: defaultgame, gamblercard, BettingRoundID, GamingMachineID
