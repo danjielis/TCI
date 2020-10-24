@@ -58,16 +58,16 @@ public class DefaultGameTest {
         assertNull(game.getBettingRound());
     }
 
-    @Test(expected = NoBetsMadeException.class)
-    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
-        Set<Bet> bets = new HashSet<>();
-        moneyAmount=new MoneyAmount(1);
-        Bet bet1=new Bet(new BetID(),moneyAmount);
-        bets.add(bet1);
-        IBettingRound bettingRound=null;
-        game.setBettingRound(bettingRound);
-        gameRule.determineWinner(1,bets);
-    }
+//    @Test(expected = NoBetsMadeException.class)
+//    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
+//        Set<Bet> bets = new HashSet<>();
+//        moneyAmount=new MoneyAmount(1);
+//        Bet bet1=new Bet(new BetID(),moneyAmount);
+//        bets.add(bet1);
+//        IBettingRound bettingRound=null;
+//        game.setBettingRound(bettingRound);
+//        gameRule.determineWinner(1,bets);
+//    }
 
 
     @Test

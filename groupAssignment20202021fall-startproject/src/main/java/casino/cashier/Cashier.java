@@ -1,12 +1,9 @@
 package casino.cashier;
 
-
 import casino.bet.Bet;
 import casino.bet.MoneyAmount;
-<<<<<<< HEAD
 import casino.idfactory.IDFactory;
 import gamblingauthoritiy.IBetLoggingAuthority;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,14 +13,7 @@ public class Cashier implements ICashier {
     private List<IGamblerCard> cardList = new ArrayList<IGamblerCard>();
 
     public Cashier(IBetLoggingAuthority loggingAuthority) {
-        this.loggingAuthority=loggingAuthority;
-=======
-import gamblingauthoritiy.IBetLoggingAuthority;
-
-public class Cashier implements ICashier {
-
-    public Cashier(IBetLoggingAuthority loggingAuthority) {
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
+        this.loggingAuthority = loggingAuthority;
     }
 
     /**
@@ -34,20 +24,14 @@ public class Cashier implements ICashier {
      * @return
      */
     @Override
-<<<<<<< HEAD
     public IGamblerCard distributeGamblerCard()
     {
-
         IGamblerCard card = new GamblerCard();
         cardList.add(card);
         loggingAuthority.logHandOutGamblingCard(card.getCardID());
 
         return card;
 
-=======
-    public IGamblerCard distributeGamblerCard() {
-        return null;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 
     /**
@@ -60,15 +44,10 @@ public class Cashier implements ICashier {
      * @param card
      */
     @Override
-<<<<<<< HEAD
     public void returnGamblerCard(IGamblerCard card)
     {
         cardList.remove(card);
         loggingAuthority.logHandInGamblingCard(card.getCardID(), card.returnBetIDsAndClearCard());
-=======
-    public void returnGamblerCard(IGamblerCard card) {
-
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 
     /**
@@ -84,7 +63,6 @@ public class Cashier implements ICashier {
      * @throws BetNotExceptedException if bet amount is invalid
      */
     @Override
-<<<<<<< HEAD
     public boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotExceptedException
     {
         if (card.getBalance().getAmountInCents() < betToCheck.getMoneyAmount().getAmountInCents())
@@ -96,10 +74,6 @@ public class Cashier implements ICashier {
             card.setBalance(new MoneyAmount(card.getBalance().getAmountInCents() - betToCheck.getMoneyAmount().getAmountInCents()));
             return true;
         }
-=======
-    public boolean checkIfBetIsValid(IGamblerCard card, Bet betToCheck) throws BetNotExceptedException {
-        return false;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 
     /**
@@ -110,7 +84,6 @@ public class Cashier implements ICashier {
      * @throws InvalidAmountException when MoneyAmount contains a negative value or is null
      */
     @Override
-<<<<<<< HEAD
     public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException
     {
         if (amount.getAmountInCents() > 0)
@@ -129,9 +102,5 @@ public class Cashier implements ICashier {
                 return true;
         }
         return false;
-=======
-    public void addAmount(IGamblerCard card, MoneyAmount amount) throws InvalidAmountException {
-
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 }

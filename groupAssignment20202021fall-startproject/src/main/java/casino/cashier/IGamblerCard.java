@@ -1,10 +1,8 @@
 package casino.cashier;
 
 import casino.bet.BetID;
-<<<<<<< HEAD
 import casino.bet.MoneyAmount;
-=======
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
+
 
 import java.util.Set;
 

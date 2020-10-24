@@ -14,4 +14,8 @@ abstract class AbstractGame implements IGame{
         this.loggingAuthority = loggingAuthority;
         this.tokenAuthority = tokenAuthority;
     }
+
+    public AbstractGame() {
+
+    }
 }

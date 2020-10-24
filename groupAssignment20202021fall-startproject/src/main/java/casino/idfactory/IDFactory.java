@@ -2,11 +2,8 @@ package casino.idfactory;
 
 import casino.bet.BetID;
 import casino.cashier.CardID;
-<<<<<<< HEAD
-=======
 import casino.game.BettingRoundID;
 import casino.gamingmachine.GamingMachineID;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
 
 /**
  * Factory for creation of GeneralID objects.
@@ -30,17 +27,7 @@ public class IDFactory {
      * @return an instance of the correct GeneralID object type, or null otherwise.
      */
     public static GeneralID generateID(String idType){
-<<<<<<< HEAD
-        switch(idType)
-        {
-            case "CardID":
-                return new CardID();
-            case "BetID":
-                return new BetID();
-        }
-        return null;
-    };
-=======
+
         switch (idType) {
             case "IDBet":
                 return new BetID();
@@ -53,7 +40,7 @@ public class IDFactory {
         }
         return null;
     }
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
+
 
 
 

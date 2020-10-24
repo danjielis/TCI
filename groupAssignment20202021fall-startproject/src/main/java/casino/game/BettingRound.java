@@ -15,7 +15,6 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
-<<<<<<< HEAD
     private final Set<Bet> bets= new Set<Bet>() {
         @Override
         public int size() {
@@ -84,28 +83,13 @@ public class BettingRound implements IBettingRound {
     };
     public BettingRound()
     {
-
-=======
-    private BettingRoundID bettingRoundID;
-    private BetToken betToken;
-    private ICashier cashier;
-    private Set<Bet> SetOfBets;
-
-    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken, ICashier cashier) {
-        this.bettingRoundID = bettingRoundID;
-        this.betToken = betToken;
-        this.cashier = cashier;
-        SetOfBets = new HashSet<Bet>();
     }
 
-    public void setListOfBetsMadeByTheRound(Set<Bet> listOfBetsMadeByTheRound) {
-        this.SetOfBets = listOfBetsMadeByTheRound;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
+    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken, ICashier cashier) {
     }
 
     @Override
     public BettingRoundID getBettingRoundID() {
-<<<<<<< HEAD
         return null;
     }
 
@@ -151,32 +135,6 @@ public class BettingRound implements IBettingRound {
     @Override
     public int numberOFBetsMade() {
         return 0;
-=======
-        return bettingRoundID;
-    }
 
-    @Override
-    public boolean placeBet(Bet bet) {
-        if (bet.getMoneyAmount().getAmountInCents() > 0) {
-            SetOfBets.add(bet);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public Set<Bet> getAllBetsMade() {
-        return SetOfBets;
-    }
-
-    @Override
-    public BetToken getBetToken() {
-        return betToken;
-    }
-
-    @Override
-    public int numberOFBetsMade() {
-        return SetOfBets.size();
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 }

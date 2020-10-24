@@ -2,21 +2,13 @@ package casino.cashier;
 
 
 import casino.bet.BetID;
-<<<<<<< HEAD
 import casino.bet.MoneyAmount;
 import casino.idfactory.IDFactory;
-
 import javax.smartcardio.Card;
-=======
-import casino.idfactory.IDFactory;
-
-import java.util.HashSet;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
 import java.util.Set;
 
 public class GamblerCard implements IGamblerCard {
 
-<<<<<<< HEAD
     final private CardID id;
     private MoneyAmount balance;
     public GamblerCard()
@@ -64,42 +56,10 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public int getNumberOfBetIDs() {
         return 0;
-=======
-    private CardID cardID;
-    private Set<BetID> betIDSet=new HashSet<BetID>();
-
-    public GamblerCard(CardID cardID) {
-        this.cardID=cardID;
-    }
-
-    @Override
-    public Set<BetID> returnBetIDs() {
-        return betIDSet;
-    }
-
-    @Override
-    public Set<BetID> returnBetIDsAndClearCard() {
-        Set<BetID> temp=returnBetIDs();
-        betIDSet.clear();
-        return temp;
-    }
-
-    @Override
-    public BetID generateNewBetID() {
-        BetID newBeltID= (BetID) IDFactory.generateID("BeltID");
-        betIDSet.add(newBeltID);
-        return newBeltID;
-    }
-
-    @Override
-    public int getNumberOfBetIDs() {
-        return betIDSet.size();
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 
     @Override
     public CardID getCardID() {
-<<<<<<< HEAD
         return id;
     }
 
@@ -112,8 +72,5 @@ public class GamblerCard implements IGamblerCard {
     @Override
     public MoneyAmount getBalance() {
         return balance;
-=======
-        return cardID;
->>>>>>> 4902ac4408fe5d983c2107556504e354481a3b4d
     }
 }
