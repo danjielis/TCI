@@ -1,7 +1,10 @@
 package casino.gamingmachine;
 
+import casino.bet.MoneyAmount;
+import casino.cashier.BetNotExceptedException;
 import casino.cashier.Cashier;
 import casino.cashier.GamblerCard;
+import casino.cashier.InvalidAmountException;
 import casino.game.BettingRound;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.Before;
@@ -13,10 +16,17 @@ import static org.mockito.Mockito.mock;
 public class GamingMachineTest {
 
     private GamblerCard card;
+    private Cashier cashier;
+    private BettingRound bettingRound;
+    private BetLoggingAuthority logging;
 
     @Before
     public void setUp() {
+
         this.card = mock(GamblerCard.class);
+        this.cashier = mock(Cashier.class);
+        this.bettingRound = mock(BettingRound.class);
+        this.logging = mock(BetLoggingAuthority.class);
     }
 
     @Test
@@ -56,5 +66,66 @@ public class GamingMachineTest {
     However convenient mocking is, it is applicable best to functionalities that lie outside of the container,
     and since here in casino we have only one container, it only seems reasonable to fully check with directs.
      */
+
+    @Test
+    public void ShouldBeAbleToPlaceABet() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(200));
+        machine.connectCard(card);
+        boolean confirmation = machine.placeBet(50);
+
+        assertTrue(confirmation);
+    }
+
+
+    @Test(expected = CurrentBetMadeException.class)
+    public void ShouldNotDisconnectCardFromAGamingMachineWithActiveBet() throws CurrentBetMadeException, InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(200));
+        machine.connectCard(card);
+        machine.placeBet(100);
+        machine.disconnectCard();
+    }
+
+
+    @Test(expected = NoPlayerCardException.class)
+    public void ShouldNotBeAbleToPlaceBetWithNoCard() throws NoPlayerCardException, BetNotExceptedException {
+        GamingMachine machine = new GamingMachine(cashier, bettingRound);
+        machine.placeBet(100);
+    }
+
+
+    @Test(expected = BetNotExceptedException.class)
+    public void ShouldNotBeAbleToMakeBetWithInsufficientAmount() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(100));
+        machine.connectCard(card);
+        machine.placeBet(200);
+    }
+
+
+    @Test(expected = BetNotExceptedException.class)
+    public void ShouldNotBeAbleToMakeBetWithInvalidAmount() throws BetNotExceptedException, InvalidAmountException, NoPlayerCardException {
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(100));
+        machine.connectCard(card);
+        machine.placeBet(-200);
+    }
 
 }
