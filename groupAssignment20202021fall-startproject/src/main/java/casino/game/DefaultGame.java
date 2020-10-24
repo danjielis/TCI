@@ -52,7 +52,7 @@ public class DefaultGame extends AbstractGame {
 
     @Override
     public void determineWinner()throws NoBetsMadeException {
-        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("bettingRoundID");
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("IDBettingRound");
         BettingRound=new BettingRound(bettingRoundID,betToken,cashier);
         BetToken token = this.BettingRound.getBetToken();
         Integer random = this.tokenAuthority.getRandomInteger(token);

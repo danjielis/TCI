@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class GamblerCardTest {
 
-    private CardID cardID= (CardID) IDFactory.generateID("cardID");
+    private CardID cardID= (CardID) IDFactory.generateID("IDCard");
     private IGamblerCard gamblerCard=new GamblerCard();
     private Set<BetID> setOfBetID=new HashSet<BetID>();
 
@@ -23,13 +23,13 @@ public class GamblerCardTest {
      * GamblerCard can return set of BetID
      * returnBetIDs Method
      */
-//    @Test
-//    public void GamblerCardCanReturnSetOfBetID(){
-//        BetID betID= gamblerCard.generateNewBetID();
-//        setOfBetID.add(betID);
-//        //assert
-//        assertThat(setOfBetID,is(gamblerCard.returnBetIDs()));
-//    }
+    @Test
+    public void GamblerCardCanReturnSetOfBetID(){
+        BetID betID= gamblerCard.generateNewBetID();
+        setOfBetID.add(betID);
+        //assert
+        assertThat(setOfBetID,is(gamblerCard.returnBetIDs()));
+    }
 
     /**
      *GamblerCard can return all betIDs associated to the card and clears all betIDs
@@ -68,6 +68,14 @@ public class GamblerCardTest {
      */
     @Test
     public void GetGamblerCardID(){
+        gamblerCard=new GamblerCard(cardID);
         assertEquals(gamblerCard.getCardID(),cardID);
+    }
+
+    @Test
+    public void GamblerCardShouldGetMoney(){
+        MoneyAmount moneyAmount=new MoneyAmount(10);
+        gamblerCard.setBalance(moneyAmount);
+        assertEquals(gamblerCard.getBalance(),moneyAmount);
     }
 }

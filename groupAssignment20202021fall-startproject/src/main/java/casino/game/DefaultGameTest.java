@@ -58,22 +58,20 @@ public class DefaultGameTest {
         assertNull(game.getBettingRound());
     }
 
-//    @Test(expected = NoBetsMadeException.class)
-//    public void determineWinnerUnSuccessfully() throws NoBetsMadeException {
-//        Set<Bet> bets = new HashSet<>();
-//        moneyAmount=new MoneyAmount(1);
-//        Bet bet1=new Bet(new BetID(),moneyAmount);
-//        bets.add(bet1);
-//        IBettingRound bettingRound=null;
-//        game.setBettingRound(bettingRound);
-//        gameRule.determineWinner(1,bets);
-//    }
+    @Test
+    public void determineWinnerUnSuccessfullyAndSizeIsZero() throws NoBetsMadeException {
+        game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
+        game.setBettingRound(null);
+        BettingRound bettingRound=new BettingRound();
+        Set<Bet> set=bettingRound.getAllBetsMade();
+        game.determineWinner();
+        assertEquals(set.size(),0);
+    }
 
 
     @Test
     public void CheckIfBettingRoundFinishedSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
         Bet bet=new Bet(new BetID(),new MoneyAmount(11));
-        //gameRule.setMaxBetPerRound(1);
         game.startBettingRound();
         game.acceptBet(bet,gamingMachine);
         boolean result= game.isBettingRoundFinished();
@@ -83,16 +81,10 @@ public class DefaultGameTest {
     @Test
     public void CheckIfBettingRoundFinishedUnSuccessfully() throws NoCurrentRoundException, NoBetsMadeException, BetNotExceptedException {
         Bet bet=new Bet(new BetID(),new MoneyAmount(1));
-        //gameRule.setMaxBetPerRound(2);
         game.startBettingRound();
         game.acceptBet(bet,gamingMachine);
         boolean result=game.isBettingRoundFinished();
         assertTrue(result);
 
     }
-
-
-
-
-
 }

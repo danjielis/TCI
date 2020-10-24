@@ -20,6 +20,10 @@ public class GamblerCard implements IGamblerCard {
         balance = new MoneyAmount(0);
     }
 
+    public GamblerCard(CardID id) {
+        this.id = id;
+    }
+
     /**
      * returns all generated betID's by this card
      *
