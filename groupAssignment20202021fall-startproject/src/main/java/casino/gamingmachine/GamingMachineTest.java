@@ -1,17 +1,21 @@
 package casino.gamingmachine;
 
+import casino.bet.Bet;
+import casino.bet.BetID;
+import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
-import casino.cashier.BetNotExceptedException;
-import casino.cashier.Cashier;
-import casino.cashier.GamblerCard;
-import casino.cashier.InvalidAmountException;
+import casino.cashier.*;
 import casino.game.BettingRound;
+import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class GamingMachineTest {
 
@@ -126,6 +130,26 @@ public class GamingMachineTest {
         cashier_local.addAmount(card, new MoneyAmount(100));
         machine.connectCard(card);
         machine.placeBet(-200);
+    }
+
+    @Test
+    public void ShouldEmptyListAfterAround() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(100));
+        machine.connectCard(card);
+
+        machine.placeBet(50);
+
+        Bet bet = new Bet((BetID) IDFactory.generateID("IDBet"), new MoneyAmount(100));
+        BetResult result = new BetResult(bet, new MoneyAmount(1000));
+
+        machine.acceptWinner(result);
+
+        assertTrue(machine.getBets().size() == 0);
     }
 
 }
