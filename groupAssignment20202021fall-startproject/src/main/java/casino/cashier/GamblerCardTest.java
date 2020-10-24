@@ -36,7 +36,7 @@ public class GamblerCardTest {
      * getNumberOfBetIDs Method
      */
     @Test
-    public void GamblerReturnBetIDAndClearCard(){
+    public void GamblerCardReturnBetIDAndClearCard(){
         gamblerCard.returnBetIDsAndClearCard();
         //assert
         assertEquals(0,gamblerCard.getNumberOfBetIDs());
@@ -47,7 +47,7 @@ public class GamblerCardTest {
      * generateNewBetID Method
      */
     @Test
-    public void GenerateNewBetID(){
+    public void GamblerCardGenerateNewBetID(){
         BetID betID=gamblerCard.generateNewBetID();
         //assert
         assertTrue(gamblerCard.returnBetIDs().contains(betID));
@@ -57,7 +57,8 @@ public class GamblerCardTest {
      *Return the number of Bet id in the gambler card
      * getNumberOfBetIDs Method
      */
-    public void ReturnNumberOfBetID(){
+    @Test
+    public void GamblerCardReturnNumberOfBetID(){
         assertThat(gamblerCard.getNumberOfBetIDs(),equalTo(0));
     }
 

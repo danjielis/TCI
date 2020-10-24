@@ -36,39 +36,12 @@ Only setting up that you might have to do, based on your IDE and Gradle setting 
 
 Refer to dependencies.
 
-#### Tests done
+#### Tests distribution
+Student A: cashier, bettinground, abstractgame, BetID
 
-| 		  | Source Code   | Test                                                                                |
-|---------|---------------|-------------------------------------------------------------------------------------|
-| 		  | Casino        | addGame_GetGameByName_ReturnSameGame()                                              |
-|         |               | addgameNameIsNullOrEmpty_ThrowIllegalArgumentException()                            |
-|         |               | addMultipleGames_GetListOfGames_IsCopyOfCreatedGames()                              |
-|         |               | addNewGame_GetListOfGames_ListIsNotEmpty()                                          |
-|         |               | createCasino_CasinoContainsBetLoggingAuthorityAndBetTokenAuthority_True()           |
-|         | GamingMachine | acceptWinner_AmountInPlayerCardIsUpdatedByCashier_MethodIsCalled()                  |
-|         |               | acceptWinner_GetOpenBets_IsEmpty()                                                  |
-|         |               | acceptWinner_WinningBetIsNotSameAsPlacedBet_ThrowIllegalArgument()                  |
-|         |               | connectCard_GetPlayerCard_True()                                                    |
-|         |               | newGamingMachine_GetOpenBets_Empty()                                                |
-|         |               | newGamingMachine_GetPlayerCard_ThrowNoPlayerCardException()                         |
-|         |               | newGamingMachine_IdIsCreatedByIDFactory_True()                                      |
-|         |               | newGamingMachine_ReturnUniqueGamingMachineID_True()                                 |
-|         |               | placeBet_BetAmountNotLargerThan0OrNull_ThrowIllegalArgumentException​               |
-|         |               | placeBet_CashierDoesNotExceptBet_BetIsNotStored_Throw_BetNotExceptedException                                   |
-|         |               | placeBet_CheckThatPlayerCardHasEnoughMoney_MethodIsCalled()                         |
-|         |               | placeBet_GameDoesNotExceptBet_BetIsNotStored_Throw_NoCurrentRoundException()                                   |
-|         |               | placeBet_GamingMachineAlreadyHaveABet_Prevent()                                     |
-|         |               | placeBet_GamingMachineHasNoPlayerCard_ThrowNoPlayerCardException()                  |
-|         |               | placeBet_GetOpenBets_NotEmpty()                                                     |
-|         |               | placeBet_SubmitToGamingMachine_True()                                               |
-|         | IDFactory     | idWithTypeX_IsDescribedByUUIDAndTimeStamp​()                                        |
-|         |               | newGeneralID_IsDescribedByUUIDAndTimeStamp()                                        |
-|         |               | newGeneralID_TimestampIsNow_True()                                                  |
-|         |               | newGeneralIDType_CaseInsensitive_True​()                                            |
-|         |               | newGeneralIDTypeNull_ReturnNull_True()                                              |
-|         |               | newIdWithTypeX_IsInstanceOfGeneralID_True​()                                        |
-|         |               | afterCreatingTwoIDs_TheyCanBeComparedByTimestamp_True()                             |
-|---------|---------------|-------------------------------------------------------------------------------------|
+Student B: defaultgame, gamblercard, BettingRoundID, GamingMachineID
+
+Student C: gamingmachine, gamerule, idfactory, CardID
 
 ## Contributing
 
