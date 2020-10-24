@@ -4,11 +4,8 @@ import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
-import casino.game.*;
 import casino.gamingmachine.IGamingMachine;
-import casino.gamingmachine.NoPlayerCardException;
 import casino.bet.*;
-import casino.idfactory.IDFactory;
 import gamblingauthoritiy.*;
 import org.junit.Test;
 
