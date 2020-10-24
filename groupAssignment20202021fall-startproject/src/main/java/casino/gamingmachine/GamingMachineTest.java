@@ -31,7 +31,7 @@ public class GamingMachineTest {
 
     @Test
     public void ShouldConnectCardToAGamingMachine() {
-        GamingMachine machine = new GamingMachine();
+        GamingMachine machine = new GamingMachine(cashier, bettingRound);
 
         machine.connectCard(this.card);
 
@@ -40,7 +40,7 @@ public class GamingMachineTest {
 
     @Test
     public void ShouldDisconnectCardFromAGamingMachine() throws CurrentBetMadeException {
-        GamingMachine machine = new GamingMachine();
+        GamingMachine machine = new GamingMachine(cashier, bettingRound);
 
         machine.connectCard(this.card);
         machine.disconnectCard();
@@ -50,8 +50,8 @@ public class GamingMachineTest {
 
 
     @Test(expected = NoPlayerCardException.class)
-    public void ShouldNotBeAbleToPlaceBetWithNoConnectedCard() throws NoPlayerCardException {
-        GamingMachine machine = new GamingMachine();
+    public void ShouldNotBeAbleToPlaceBetWithNoConnectedCard() throws NoPlayerCardException, BetNotExceptedException {
+        GamingMachine machine = new GamingMachine(cashier, bettingRound);
 
         machine.placeBet(1000);
     }

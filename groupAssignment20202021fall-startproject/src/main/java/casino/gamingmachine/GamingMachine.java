@@ -1,12 +1,34 @@
 package casino.gamingmachine;
 
 
+import casino.bet.Bet;
+import casino.bet.BetID;
 import casino.bet.BetResult;
+import casino.bet.MoneyAmount;
+import casino.cashier.BetNotExceptedException;
+import casino.cashier.Cashier;
 import casino.cashier.IGamblerCard;
+import casino.game.BettingRound;
+import casino.idfactory.IDFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GamingMachine implements IGamingMachine {
 
     private IGamblerCard connectedCard;
+    private Cashier cashier;
+    private BettingRound bettingRound;
+
+    private GamingMachineID gamingMachineID;
+    private List<Bet> bets;
+
+    public GamingMachine(Cashier cashier_local, BettingRound bettingRound) {
+        this.cashier = cashier_local;
+        this.bettingRound = bettingRound;
+        this.gamingMachineID = (GamingMachineID) IDFactory.generateID("gamingMachineID");
+        this.bets = new ArrayList<Bet>();
+    }
 
     /**
      * try to place bet with given amount and connected card.
@@ -18,9 +40,18 @@ public class GamingMachine implements IGamingMachine {
      * @throws NoPlayerCardException when no card is connected to this machine.
      */
     @Override
-    public boolean placeBet(long amountInCents) throws NoPlayerCardException {
+    public boolean placeBet(long amountInCents) throws NoPlayerCardException, BetNotExceptedException {
+        if (this.getConnectedCard() == null) { throw new NoPlayerCardException(); }
+        if (amountInCents < 1) { throw new BetNotExceptedException(); }
 
-        if (this.connectedCard == null) { throw new NoPlayerCardException(); }
+        Bet bet = new Bet((BetID) IDFactory.generateID("betID"), new MoneyAmount(amountInCents));
+
+        if (this.cashier.checkIfBetIsValid(this.connectedCard, bet)) {
+            if (this.bettingRound.placeBet(bet)) {
+                bets.add(bet);
+                return true;
+            }
+        }
 
         return false;
     }
@@ -44,7 +75,8 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public GamingMachineID getGamingMachineID() {
-        return null;
+
+        return this.gamingMachineID;
     }
 
     /**
@@ -66,6 +98,8 @@ public class GamingMachine implements IGamingMachine {
      */
     @Override
     public void disconnectCard() throws CurrentBetMadeException {
+        if (!bets.isEmpty()) { throw new CurrentBetMadeException(); }
+
         this.connectedCard = null;
     }
 
