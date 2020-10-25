@@ -8,6 +8,7 @@ import casino.cashier.InvalidAmountException;
 import casino.game.BettingRound;
 import casino.game.DefaultGame;
 import casino.game.GameRule;
+import casino.gamingmachine.CurrentBetMadeException;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import casino.idfactory.BettingRoundID;
@@ -119,6 +120,36 @@ public class PlayerTest {
         boolean confirmation = gamingMachine.placeBet(50);
 
         assertTrue("response must be true", confirmation);
+    }
+
+
+    @Test(expected = CurrentBetMadeException.class)
+    public void ShouldNotDisconnectCardWithActiveBet() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException, CurrentBetMadeException {
+        Player player = new Player();
+        // approaches cashier to get a card
+        Cashier cashier = new Cashier(loggingAuthority);
+        // hands out card
+        GamblerCard gamblerCard = (GamblerCard) cashier.distributeGamblerCard();
+        // obtain card
+        player.obtainGamblerCard(gamblerCard);
+        // PLAYER GIVES CASH TO THE CASHIER IN REAL LIFE
+        cashier.addAmount(gamblerCard, new MoneyAmount(100));
+        // player approaches gaming machine and connects
+
+        // quite few things must happen
+        GameRule gameRule = new GameRule();
+        DefaultGame defaultGame = new DefaultGame(gameRule, loggingAuthority, tokenAuthority);
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("IDBettingRound");
+        BetToken betToken = mock(BetToken.class);
+        BettingRound bettingRound = new BettingRound(bettingRoundID, betToken);
+        GamingMachine gamingMachine = new GamingMachine(cashier, bettingRound);
+
+        // player connects to a machine
+        gamingMachine.connectCard(gamblerCard);
+
+        boolean confirmation = gamingMachine.placeBet(50);
+
+        gamingMachine.disconnectCard();
     }
 
 }
