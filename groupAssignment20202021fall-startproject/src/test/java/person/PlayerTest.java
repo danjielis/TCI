@@ -1,11 +1,19 @@
 package person;
 
 import casino.bet.MoneyAmount;
+import casino.cashier.BetNotExceptedException;
 import casino.cashier.Cashier;
 import casino.cashier.GamblerCard;
 import casino.cashier.InvalidAmountException;
+import casino.game.BettingRound;
+import casino.game.DefaultGame;
+import casino.game.GameRule;
 import casino.gamingmachine.GamingMachine;
+import casino.gamingmachine.NoPlayerCardException;
+import casino.idfactory.BettingRoundID;
 import casino.idfactory.GamingMachineID;
+import casino.idfactory.IDFactory;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import gamblingauthoritiy.IBetTokenAuthority;
 import org.junit.Before;
@@ -17,10 +25,12 @@ import static org.mockito.Mockito.*;
 public class PlayerTest {
 
     private IBetLoggingAuthority loggingAuthority;
+    private IBetTokenAuthority tokenAuthority;
 
     @Before
     public void setUp() {
         this.loggingAuthority = mock(IBetLoggingAuthority.class);
+        this.tokenAuthority = mock(IBetTokenAuthority.class);
     }
 
 
@@ -78,6 +88,37 @@ public class PlayerTest {
         cashier.addAmount(gamblerCard, new MoneyAmount(100));
 
         assertEquals(player.getAvailableAmount(), 100);
+    }
+
+
+
+    @Test
+    public void ShouldBeAbleToPlaceABet() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
+        Player player = new Player();
+        // approaches cashier to get a card
+        Cashier cashier = new Cashier(loggingAuthority);
+        // hands out card
+        GamblerCard gamblerCard = (GamblerCard) cashier.distributeGamblerCard();
+        // obtain card
+        player.obtainGamblerCard(gamblerCard);
+        // PLAYER GIVES CASH TO THE CASHIER IN REAL LIFE
+        cashier.addAmount(gamblerCard, new MoneyAmount(100));
+        // player approaches gaming machine and connects
+
+        // quite few things must happen
+        GameRule gameRule = new GameRule();
+        DefaultGame defaultGame = new DefaultGame(gameRule, loggingAuthority, tokenAuthority);
+        BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("IDBettingRound");
+        BetToken betToken = mock(BetToken.class);
+        BettingRound bettingRound = new BettingRound(bettingRoundID, betToken);
+        GamingMachine gamingMachine = new GamingMachine(cashier, bettingRound);
+
+        // player connects to a machine
+        gamingMachine.connectCard(gamblerCard);
+
+        boolean confirmation = gamingMachine.placeBet(50);
+
+        assertTrue("response must be true", confirmation);
     }
 
 }
