@@ -75,4 +75,24 @@ public class BettingRoundTest {
         Assert.assertSame(testBettingRound.getBettingRoundID(), testBettingRoundID);
     }
 
+    /**
+     * ADDITIONAL TEST
+     * Test if the numberOFBetsMade() method can return the correct number of bets.
+     * Created by Student A: Yoanna Borisova
+     */
+    @Test
+    public void BettingRoundCanReturnCorrectNumberOfBets()
+    {
+        //Arrange
+        BettingRoundID testBettingRoundID = mock(BettingRoundID.class);
+        BetToken testBetToken = mock(BetToken.class);
+
+        //Act
+        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
+        testBettingRound.placeBet(bet);
+
+        //Assert
+        Assert.assertEquals(testBettingRound.numberOFBetsMade(),1);
+    }
+
 }
