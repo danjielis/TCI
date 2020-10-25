@@ -2,6 +2,7 @@ package casino.idfactory;
 
 import casino.cashier.Cashier;
 import casino.game.BettingRound;
+import casino.gamingmachine.GamingMachineID;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;

@@ -3,8 +3,7 @@ package person;
 import casino.cashier.GamblerCard;
 import casino.cashier.IGamblerCard;
 import casino.gamingmachine.GamingMachine;
-import casino.gamingmachine.IGamingMachine;
-import casino.idfactory.GamingMachineID;
+import casino.gamingmachine.GamingMachineID;
 
 public class Player {
     private IGamblerCard connectedCard;

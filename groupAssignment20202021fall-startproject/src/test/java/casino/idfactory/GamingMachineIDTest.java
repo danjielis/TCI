@@ -1,8 +1,6 @@
 package casino.idfactory;
 
-import casino.idfactory.GamingMachineID;
-import casino.idfactory.GeneralID;
-import casino.idfactory.IDFactory;
+import casino.gamingmachine.GamingMachineID;
 import org.junit.Test;
 import static org.hamcrest.core.IsInstanceOf.instanceOf;
 import static org.junit.Assert.*;
@@ -11,8 +9,9 @@ public class GamingMachineIDTest {
 
     @Test
     public void FactoryCreateBettingRoundID(){
-        GeneralID gamingMachineIDIDInstance= IDFactory.generateID("IDGamingMachine");
-        assertThat(gamingMachineIDIDInstance, instanceOf(GamingMachineID.class));
+        GeneralID temp = (GamingMachineID) IDFactory.generateID("IDGamingMachine");
+
+        assertThat(temp, instanceOf(GamingMachineID.class));
     }
 
     @Test

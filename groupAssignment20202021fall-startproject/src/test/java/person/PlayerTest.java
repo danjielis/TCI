@@ -12,7 +12,7 @@ import casino.gamingmachine.CurrentBetMadeException;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import casino.idfactory.BettingRoundID;
-import casino.idfactory.GamingMachineID;
+import casino.gamingmachine.GamingMachineID;
 import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;

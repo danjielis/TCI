@@ -10,7 +10,6 @@ import casino.cashier.Cashier;
 import casino.cashier.IGamblerCard;
 import casino.cashier.InvalidAmountException;
 import casino.game.BettingRound;
-import casino.idfactory.GamingMachineID;
 import casino.idfactory.IDFactory;
 
 import java.util.ArrayList;

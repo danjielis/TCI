@@ -5,7 +5,7 @@ import casino.idfactory.BetID;
 import casino.bet.BetResult;
 import casino.idfactory.BettingRoundID;
 import casino.game.IBettingRound;
-import casino.idfactory.GamingMachineID;
+import casino.gamingmachine.GamingMachineID;
 import casino.idfactory.GeneralID;
 
 import java.util.Set;
