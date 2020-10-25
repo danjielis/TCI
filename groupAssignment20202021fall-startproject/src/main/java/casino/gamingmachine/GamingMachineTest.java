@@ -10,8 +10,11 @@ import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 
 public class GamingMachineTest {
@@ -43,7 +46,7 @@ public class GamingMachineTest {
         machine.connectCard(this.card);
 
         // Assert - expecting desired outcome
-        assertEquals(this.card, machine.getConnectedCard());
+        assertEquals("Connected card equals provided card", this.card, machine.getConnectedCard());
     }
 
 
@@ -61,7 +64,7 @@ public class GamingMachineTest {
         machine.disconnectCard();
 
         // Assert - expecting desired outcome
-        assertNull(machine.getConnectedCard());
+        assertNull("After disconnect card slot is empty - null", machine.getConnectedCard());
     }
 
 
@@ -117,7 +120,7 @@ public class GamingMachineTest {
         boolean confirmation = machine.placeBet(50);
 
         // Assert - expecting desired outcome
-        assertTrue(confirmation);
+        assertTrue("Confirmation was not produced for a placed bet", confirmation);
     }
 
 
@@ -207,6 +210,33 @@ public class GamingMachineTest {
         // Act - action on SUT
         machine.connectCard(card);
         machine.placeBet(-200);
+    }
+
+
+    /**
+     * Should be able to track all bets made on this machine, so that determineWinner method could
+     * later erase them and inform if there is a match for a winner.
+     * @throws NoPlayerCardException
+     * @throws BetNotExceptedException
+     * @throws InvalidAmountException
+     */
+    @Test
+    public void ShouldInformCashierDuringBetPlacement() throws NoPlayerCardException, BetNotExceptedException, InvalidAmountException {
+        // Arrange - preconditions and inputs
+        Cashier cashier_local = new Cashier(logging);
+        BettingRound bettingRound = new BettingRound();
+        GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
+        GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
+        cashier_local.addAmount(card, new MoneyAmount(1000));
+
+        // Act - action on SUT
+        machine.connectCard(card);
+        machine.placeBet(50);
+        machine.placeBet(50);
+        machine.placeBet(50);
+
+        List<Bet> bets = machine.getBets();
+        assertEquals("Should be able to track bets made from this machine", 3, machine.getBets().size());
     }
 
 
