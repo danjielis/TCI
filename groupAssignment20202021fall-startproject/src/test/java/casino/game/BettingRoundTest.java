@@ -3,6 +3,8 @@ package casino.game;
 import casino.bet.Bet;
 import casino.idfactory.BetID;
 import casino.bet.MoneyAmount;
+import casino.idfactory.BettingRoundID;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;
 import org.junit.Before;
@@ -52,6 +54,25 @@ public class BettingRoundTest {
 
         //Act
         bettingRound.placeBet(null);
+    }
+
+    /**
+     * Test if the betting round can be constructed
+     * Created by Student A: Yoanna Borisova
+     */
+    @Test
+    public void BettingRoundCanBeConstructed()
+    {
+        //Arrange
+        BettingRoundID testBettingRoundID = mock(BettingRoundID.class);
+        BetToken testBetToken = mock(BetToken.class);
+
+        //Act
+        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
+
+        //Assert
+        Assert.assertSame(testBettingRound.getBetToken(), testBetToken);
+        Assert.assertSame(testBettingRound.getBettingRoundID(), testBettingRoundID);
     }
 
 }
