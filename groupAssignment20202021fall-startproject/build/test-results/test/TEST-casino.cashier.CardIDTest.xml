@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="casino.cashier.CardIDTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:13" hostname="DESKTOP-PIAKFOI" time="0.12">
+<testsuite name="casino.cashier.CardIDTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-25T18:40:03" hostname="DESKTOP-PIAKFOI" time="0.116">
   <properties/>
-  <testcase name="IDFactoryCanCreateCardID" classname="casino.cashier.CardIDTest" time="0.006"/>
-  <testcase name="ShouldHaveUniqueIdentification" classname="casino.cashier.CardIDTest" time="0.0"/>
-  <testcase name="ShouldHaveDifferentTimestamps" classname="casino.cashier.CardIDTest" time="0.114"/>
+  <testcase name="ShouldHaveDifferentTimestamps" classname="casino.cashier.CardIDTest" time="0.116"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
