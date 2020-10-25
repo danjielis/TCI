@@ -20,6 +20,11 @@ public class PlayerTest {
         this.loggingAuthority = mock(IBetLoggingAuthority.class);
     }
 
+
+    /**
+     * Checks if player can obtain gambler card from the cashier. No authorization
+     * is assumed for now.
+     */
     @Test
     public void ShouldReceiveGamblerCard() {
         Player player = new Player();
