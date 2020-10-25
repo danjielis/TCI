@@ -60,7 +60,11 @@ public class PlayerTest {
     }
 
 
-
+    /**
+     * Player should be able to update balance through cashier, and that
+     * balance should reflect with the held gambler card.
+     * @throws InvalidAmountException
+     */
     @Test
     public void ShouldBeAbleToUpdateCardBalance() throws InvalidAmountException {
         Player player = new Player();
