@@ -1,10 +1,5 @@
 package casino.idfactory;
 
-import casino.bet.BetID;
-import casino.cashier.CardID;
-import casino.game.BettingRoundID;
-import casino.gamingmachine.GamingMachineID;
-
 /**
  * Factory for creation of GeneralID objects.
  * creation of the right object is done by specifying the type to create as a string

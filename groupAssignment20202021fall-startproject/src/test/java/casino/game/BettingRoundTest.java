@@ -1,7 +1,7 @@
 package casino.game;
 
 import casino.bet.Bet;
-import casino.bet.BetID;
+import casino.idfactory.BetID;
 import casino.bet.MoneyAmount;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;

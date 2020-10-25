@@ -1,12 +1,11 @@
 package casino.game;
 
 import casino.cashier.ICashier;
+import casino.idfactory.BettingRoundID;
 import gamblingauthoritiy.BetToken;
-import gamblingauthoritiy.IBetLoggingAuthority;
 import casino.bet.Bet;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 

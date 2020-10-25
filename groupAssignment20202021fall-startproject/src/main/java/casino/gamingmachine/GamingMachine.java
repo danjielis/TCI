@@ -2,7 +2,7 @@ package casino.gamingmachine;
 
 
 import casino.bet.Bet;
-import casino.bet.BetID;
+import casino.idfactory.BetID;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.BetNotExceptedException;
@@ -10,6 +10,7 @@ import casino.cashier.Cashier;
 import casino.cashier.IGamblerCard;
 import casino.cashier.InvalidAmountException;
 import casino.game.BettingRound;
+import casino.idfactory.GamingMachineID;
 import casino.idfactory.IDFactory;
 
 import java.util.ArrayList;

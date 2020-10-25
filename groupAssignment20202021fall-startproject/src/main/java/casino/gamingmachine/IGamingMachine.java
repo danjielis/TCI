@@ -4,6 +4,7 @@ import casino.bet.BetResult;
 import casino.cashier.BetNotExceptedException;
 import casino.cashier.IGamblerCard;
 import casino.cashier.InvalidAmountException;
+import casino.idfactory.GamingMachineID;
 
 /**
  * Described a gaming machine. a machine has a gamingmachineID,

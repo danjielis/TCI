@@ -4,7 +4,7 @@ import casino.bet.Bet;
 import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.game.BettingRound;
-import casino.game.BettingRoundID;
+import casino.idfactory.BettingRoundID;
 import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.NoPlayerCardException;
 import gamblingauthoritiy.BetToken;

@@ -1,10 +1,11 @@
 package casino.cashier;
 
 
-import casino.bet.BetID;
+import casino.idfactory.BetID;
 import casino.bet.MoneyAmount;
+import casino.idfactory.CardID;
 import casino.idfactory.IDFactory;
-import javax.smartcardio.Card;
+
 import java.util.HashSet;
 import java.util.Set;
 
