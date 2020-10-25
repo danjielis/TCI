@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.game.GameRuleTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:14" hostname="DESKTOP-PIAKFOI" time="0.008">
+  <properties/>
+  <testcase name="ShouldDetermineWinnerOutOfBetSet" classname="casino.game.GameRuleTest" time="0.008"/>
+  <testcase name="ShouldThrowNoBetsMadeExceptionIfNoBetsMade" classname="casino.game.GameRuleTest" time="0.0"/>
+  <testcase name="ShouldReturnMaximumNumberOfBetsPerRound" classname="casino.game.GameRuleTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

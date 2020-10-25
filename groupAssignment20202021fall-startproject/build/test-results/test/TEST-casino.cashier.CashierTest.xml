@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="casino.cashier.CashierTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T20:07:07" hostname="LAPTOP-1J11B0F5" time="2.374">
+<testsuite name="casino.cashier.CashierTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:13" hostname="DESKTOP-PIAKFOI" time="0.402">
   <properties/>
-  <testcase name="CashierCanAddMoneyBalanceWithMockedGamblerCard" classname="casino.cashier.CashierTest" time="2.374"/>
+  <testcase name="CashierCannotValidateInvalidBet" classname="casino.cashier.CashierTest" time="0.373"/>
+  <testcase name="CashierCanRetrieveGamblerCardAndInformBetLoggingAuthority" classname="casino.cashier.CashierTest" time="0.007"/>
+  <testcase name="CashierCanAddMoneyBalance" classname="casino.cashier.CashierTest" time="0.0"/>
+  <testcase name="CashierCanAddWinnerMoneyAmount" classname="casino.cashier.CashierTest" time="0.019"/>
+  <testcase name="CashierCanHandGamblerCardAndTrackGamblerCardsAndInformBetLoggingAuthority" classname="casino.cashier.CashierTest" time="0.0"/>
+  <testcase name="CashierCanValidateBet" classname="casino.cashier.CashierTest" time="0.001"/>
+  <testcase name="CashierCannotAddInvalidAmount" classname="casino.cashier.CashierTest" time="0.001"/>
+  <testcase name="CashierCanValidateBetAndBetAmountIsSubstractedFromCard" classname="casino.cashier.CashierTest" time="0.001"/>
+  <testcase name="CashierCanAddMoneyBalanceWithMockedGamblerCard" classname="casino.cashier.CashierTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

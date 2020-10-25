@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.idfactory.IDFactoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:14" hostname="DESKTOP-PIAKFOI" time="0.332">
+  <properties/>
+  <testcase name="ShouldReturnNullIfSpecifiedTypeIsInvalid" classname="casino.idfactory.IDFactoryTest" time="0.0"/>
+  <testcase name="ShouldCreateTypeInstancesWithUniqueIDs" classname="casino.idfactory.IDFactoryTest" time="0.0"/>
+  <testcase name="ShouldCreateTypeBetID" classname="casino.idfactory.IDFactoryTest" time="0.0"/>
+  <testcase name="ShouldCreateTypeInstancesWithDifferentTimeStamps" classname="casino.idfactory.IDFactoryTest" time="0.33"/>
+  <testcase name="ShouldCreateTypeGamingMachineID" classname="casino.idfactory.IDFactoryTest" time="0.001"/>
+  <testcase name="ShouldCreateTypeCardID" classname="casino.idfactory.IDFactoryTest" time="0.001"/>
+  <testcase name="ShouldCreateTypeBettingRoundID" classname="casino.idfactory.IDFactoryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

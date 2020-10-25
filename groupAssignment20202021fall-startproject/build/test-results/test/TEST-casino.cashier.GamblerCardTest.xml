@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.cashier.GamblerCardTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:13" hostname="DESKTOP-PIAKFOI" time="0.003">
+  <properties/>
+  <testcase name="GamblerCardReturnBetIDAndClearCard" classname="casino.cashier.GamblerCardTest" time="0.0"/>
+  <testcase name="GetGamblerCardID" classname="casino.cashier.GamblerCardTest" time="0.001"/>
+  <testcase name="GamblerCardReturnNumberOfBetID" classname="casino.cashier.GamblerCardTest" time="0.0"/>
+  <testcase name="GamblerCardShouldGetMoney" classname="casino.cashier.GamblerCardTest" time="0.001"/>
+  <testcase name="GamblerCardCanReturnSetOfBetID" classname="casino.cashier.GamblerCardTest" time="0.001"/>
+  <testcase name="GamblerCardGenerateNewBetID" classname="casino.cashier.GamblerCardTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

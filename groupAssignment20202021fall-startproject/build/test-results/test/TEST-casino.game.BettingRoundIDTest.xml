@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="casino.game.BettingRoundIDTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-25T17:48:13" hostname="DESKTOP-PIAKFOI" time="0.104">
+  <properties/>
+  <testcase name="FactoryShouldCreateUniqueBettingRoundID" classname="casino.game.BettingRoundIDTest" time="0.0"/>
+  <testcase name="FactoryShouldCreateUniqueTimeStamp" classname="casino.game.BettingRoundIDTest" time="0.102"/>
+  <testcase name="FactoryCreateBettingRoundID" classname="casino.game.BettingRoundIDTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
