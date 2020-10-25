@@ -5,7 +5,9 @@ import casino.bet.MoneyAmount;
 import casino.cashier.*;
 import casino.gamingmachine.IGamingMachine;
 import casino.idfactory.BetID;
+import casino.idfactory.BettingRoundID;
 import gamblingauthoritiy.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Set;
@@ -21,6 +23,16 @@ public class DefaultGameTest {
     private DefaultGame game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
     private MoneyAmount moneyAmount ;
 
+    private BettingRoundID testBettingRoundID;
+    private BetToken testBetToken;
+
+    //Arrange
+    @Before
+    public void setUp()
+    {
+        this.testBettingRoundID = mock(BettingRoundID.class);
+        this.testBetToken = mock(BetToken.class);
+    }
     /**
      * Check if the new bettingRound starts
      * startBettingRound method
@@ -60,7 +72,7 @@ public class DefaultGameTest {
     public void determineWinnerUnSuccessfullyAndSizeIsZero() throws NoBetsMadeException {
         game=new DefaultGame(gameRule,betLoggingAuthority,betTokenAuthority);
         game.setBettingRound(null);
-        BettingRound bettingRound=new BettingRound();
+        BettingRound bettingRound=new BettingRound(testBettingRoundID,testBetToken);
         Set<Bet> set=bettingRound.getAllBetsMade();
         game.determineWinner();
         assertEquals(set.size(),0);

@@ -93,9 +93,6 @@ public class BettingRound implements IBettingRound {
 
         }
     };
-    public BettingRound()
-    {
-    }
 
     public BettingRound(BettingRoundID bettingRoundID, BetToken betToken) {
         this.bettingRoundID = bettingRoundID;

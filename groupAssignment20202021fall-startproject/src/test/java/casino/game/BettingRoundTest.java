@@ -19,10 +19,16 @@ import static org.mockito.Mockito.when;
 public class BettingRoundTest {
 
     private Bet bet;
+    private BettingRoundID testBettingRoundID;
+    private BetToken testBetToken;
+
+    //Arrange
     @Before
     public void setUp()
     {
         this.bet = mock(Bet.class);
+        this.testBettingRoundID = mock(BettingRoundID.class);
+        this.testBetToken = mock(BetToken.class);
     }
 
     /**
@@ -33,11 +39,10 @@ public class BettingRoundTest {
     public void BettingRoundCanPlaceABet()
     {
         //Arrange
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Act & Assert
         Assert.assertTrue(bettingRound.placeBet(bet));
-
     }
 
     /**
@@ -50,7 +55,7 @@ public class BettingRoundTest {
     public void BettingRoundCannotPlaceANullBet()
     {
         //Arrange
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Act
         bettingRound.placeBet(null);
@@ -63,11 +68,7 @@ public class BettingRoundTest {
     @Test
     public void BettingRoundCanBeConstructed()
     {
-        //Arrange
-        BettingRoundID testBettingRoundID = mock(BettingRoundID.class);
-        BetToken testBetToken = mock(BetToken.class);
-
-        //Act
+        //Arrange Act
         BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Assert
@@ -84,11 +85,9 @@ public class BettingRoundTest {
     public void BettingRoundCanReturnCorrectNumberOfBets()
     {
         //Arrange
-        BettingRoundID testBettingRoundID = mock(BettingRoundID.class);
-        BetToken testBetToken = mock(BetToken.class);
+        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Act
-        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
         testBettingRound.placeBet(bet);
 
         //Assert
