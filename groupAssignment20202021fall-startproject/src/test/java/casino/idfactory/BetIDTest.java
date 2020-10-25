@@ -20,6 +20,7 @@ public class BetIDTest {
     @Test
     public void IDFactoryCanCreateBetID()
     {
+        //Arrange & Act
         GeneralID temp = IDFactory.generateID("IDBet");
 
         //assertThat(temp, instanceOf(BetID.class));
