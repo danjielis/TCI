@@ -38,6 +38,11 @@ public class PlayerTest {
         verify(loggingAuthority).logHandOutGamblingCard(card.getCardID());
     }
 
+
+    /**
+     * Player should be connected to one machine at a time. That is who call for bet is made.
+     * Assume that it is a precaution.
+     */
     @Test
     public void ShouldConnectToAGamingMachine() {
         Player player = new Player();

@@ -14,12 +14,14 @@ public class Player {
         this.connectedCard = card;
     }
 
-    public IGamblerCard getGamblerCard() {
-        return this.connectedCard;
-    }
-
     public void selectGamingMachine(GamingMachine gamingMachine) {
         this.gamingMachine = gamingMachine;
+    }
+
+
+
+    public IGamblerCard getGamblerCard() {
+        return this.connectedCard;
     }
 
     public GamingMachineID selectedGamingMachineID() {
