@@ -137,4 +137,18 @@ public class IDFactoryTest {
                         (cardID.getTimeStamp() != gamingMachineID.getTimeStamp())
         );
     }
+
+
+    /**
+     * As specified, if type is unsupported should return null
+     */
+    @Test
+    public void ShouldReturnNullIfSpecifiedTypeIsInvalid() {
+        // Arrange - preconditions and inputs
+        // Act - action on SUT
+        GeneralID invalid_id = IDFactory.generateID("invalid_id");
+
+        // Assert - expecting desired outcome
+        assertNull(invalid_id);
+    }
 }
