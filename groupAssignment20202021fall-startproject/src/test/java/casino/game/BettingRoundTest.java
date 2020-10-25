@@ -30,8 +30,10 @@ public class BettingRoundTest {
     @Test
     public void BettingRoundCanPlaceABet()
     {
+        //Arrange
         BettingRound bettingRound = new BettingRound();
 
+        //Act & Assert
         Assert.assertTrue(bettingRound.placeBet(bet));
 
     }
@@ -39,12 +41,16 @@ public class BettingRoundTest {
     /**
      * Test if the betting round cannot place a bet if the bet is null
      * Created by Student A: Yoanna Borisova
+     * @throws IllegalArgumentException
      */
+    //Assert
     @Test (expected = IllegalArgumentException.class)
     public void BettingRoundCannotPlaceANullBet()
     {
+        //Arrange
         BettingRound bettingRound = new BettingRound();
 
+        //Act
         bettingRound.placeBet(null);
     }
 

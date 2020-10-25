@@ -21,10 +21,13 @@ public class AbstractGameTest {
     @Test
     public void AbstractGameCanBeConstructed()
     {
+        //Arrange  Act
         IBetLoggingAuthority betLoggingAuthority = mock(IBetLoggingAuthority.class);
         IBetTokenAuthority betTokenAuthority = mock(IBetTokenAuthority.class);
-
+        
         AbstractGame testAbstractGame = mock(AbstractGame.class, Mockito.withSettings().useConstructor(betLoggingAuthority, betTokenAuthority).defaultAnswer(CALLS_REAL_METHODS));
+
+        //Assert
         Assert.assertSame(betLoggingAuthority, testAbstractGame.loggingAuthority);
         Assert.assertSame(betTokenAuthority, testAbstractGame.tokenAuthority);
 
