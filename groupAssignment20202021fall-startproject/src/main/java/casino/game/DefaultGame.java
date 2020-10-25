@@ -34,7 +34,7 @@ public class DefaultGame extends AbstractGame {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("bettingRoundID");
         tokenAuthority=new BetTokenAuthority();
         betToken=new BetToken(bettingRoundID);
-        BettingRound=new BettingRound(bettingRoundID,betToken,cashier);
+        BettingRound=new BettingRound(bettingRoundID,betToken);
 
         loggingAuthority.logStartBettingRound(BettingRound);
 
@@ -53,7 +53,7 @@ public class DefaultGame extends AbstractGame {
     @Override
     public void determineWinner()throws NoBetsMadeException {
         BettingRoundID bettingRoundID = (BettingRoundID) IDFactory.generateID("IDBettingRound");
-        BettingRound=new BettingRound(bettingRoundID,betToken,cashier);
+        BettingRound=new BettingRound(bettingRoundID,betToken);
         BetToken token = this.BettingRound.getBetToken();
         Integer random = this.tokenAuthority.getRandomInteger(token);
         BetResult result = this.gameRule.determineWinner(random, this.BettingRound.getAllBetsMade());

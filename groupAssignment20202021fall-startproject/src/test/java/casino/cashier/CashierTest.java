@@ -199,7 +199,7 @@ public class CashierTest {
         //Arrange
         Cashier testCashier = new Cashier(loggingAuthority);
         BetToken testBetToken = mock(BetToken.class);
-        BettingRound testBettingRound = new BettingRound(new BettingRoundID(), testBetToken, testCashier);
+        BettingRound testBettingRound = new BettingRound(new BettingRoundID(), testBetToken);
         GamblerCard card = new GamblerCard();
         testCashier.addAmount(card, new MoneyAmount(100));
         GamingMachine testGamingMachine = new GamingMachine(testCashier, testBettingRound);

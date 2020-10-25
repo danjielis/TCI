@@ -3,6 +3,8 @@ package casino.game;
 import casino.bet.Bet;
 import casino.idfactory.BetID;
 import casino.bet.MoneyAmount;
+import casino.idfactory.BettingRoundID;
+import gamblingauthoritiy.BetToken;
 import gamblingauthoritiy.IBetLoggingAuthority;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,10 +19,16 @@ import static org.mockito.Mockito.when;
 public class BettingRoundTest {
 
     private Bet bet;
+    private BettingRoundID testBettingRoundID;
+    private BetToken testBetToken;
+
+    //Arrange
     @Before
     public void setUp()
     {
         this.bet = mock(Bet.class);
+        this.testBettingRoundID = mock(BettingRoundID.class);
+        this.testBetToken = mock(BetToken.class);
     }
 
     /**
@@ -31,11 +39,10 @@ public class BettingRoundTest {
     public void BettingRoundCanPlaceABet()
     {
         //Arrange
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Act & Assert
         Assert.assertTrue(bettingRound.placeBet(bet));
-
     }
 
     /**
@@ -48,10 +55,43 @@ public class BettingRoundTest {
     public void BettingRoundCannotPlaceANullBet()
     {
         //Arrange
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
 
         //Act
         bettingRound.placeBet(null);
+    }
+
+    /**
+     * Test if the betting round can be constructed
+     * Created by Student A: Yoanna Borisova
+     */
+    @Test
+    public void BettingRoundCanBeConstructed()
+    {
+        //Arrange Act
+        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
+
+        //Assert
+        Assert.assertSame(testBettingRound.getBetToken(), testBetToken);
+        Assert.assertSame(testBettingRound.getBettingRoundID(), testBettingRoundID);
+    }
+
+    /**
+     * ADDITIONAL TEST
+     * Test if the numberOFBetsMade() method can return the correct number of bets.
+     * Created by Student A: Yoanna Borisova
+     */
+    @Test
+    public void BettingRoundCanReturnCorrectNumberOfBets()
+    {
+        //Arrange
+        BettingRound testBettingRound = new BettingRound(testBettingRoundID,testBetToken);
+
+        //Act
+        testBettingRound.placeBet(bet);
+
+        //Assert
+        Assert.assertEquals(testBettingRound.numberOFBetsMade(),1);
     }
 
 }

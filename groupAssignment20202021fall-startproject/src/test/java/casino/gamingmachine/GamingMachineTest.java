@@ -6,8 +6,10 @@ import casino.bet.BetResult;
 import casino.bet.MoneyAmount;
 import casino.cashier.*;
 import casino.game.BettingRound;
+import casino.idfactory.BettingRoundID;
 import casino.idfactory.IDFactory;
 import gamblingauthoritiy.BetLoggingAuthority;
+import gamblingauthoritiy.BetToken;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,6 +27,8 @@ public class GamingMachineTest {
     private Cashier cashier;
     private BettingRound bettingRound;
     private BetLoggingAuthority logging;
+    private BettingRoundID testBettingRoundID;
+    private BetToken testBetToken;
 
     @Before
     public void setUp() {
@@ -33,6 +37,8 @@ public class GamingMachineTest {
         this.cashier = mock(Cashier.class);
         this.bettingRound = mock(BettingRound.class);
         this.logging = mock(BetLoggingAuthority.class);
+        this.testBettingRoundID = mock(BettingRoundID.class);
+        this.testBetToken = mock(BetToken.class);
     }
     //------------------------------------------------------------------
 
@@ -112,7 +118,7 @@ public class GamingMachineTest {
     public void ShouldProduceConfirmationIfBetPlacedSuccessfully() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(200));
@@ -141,7 +147,7 @@ public class GamingMachineTest {
     public void ShouldNotDisconnectCardFromAGamingMachineWithActiveBet() throws CurrentBetMadeException, InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(200));
@@ -181,7 +187,7 @@ public class GamingMachineTest {
     public void ShouldNotBeAbleToMakeBetWithInsufficientAmount() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(100));
@@ -204,7 +210,7 @@ public class GamingMachineTest {
     public void ShouldNotBeAbleToMakeBetWithInvalidAmount() throws BetNotExceptedException, InvalidAmountException, NoPlayerCardException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);;
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(100));
@@ -226,7 +232,7 @@ public class GamingMachineTest {
     public void ShouldKeepTrackOfBetsPlacedOnThisMachineThisRound() throws NoPlayerCardException, BetNotExceptedException, InvalidAmountException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(1000));
@@ -253,7 +259,7 @@ public class GamingMachineTest {
     public void ShouldEmptyListAfterAround() throws InvalidAmountException, NoPlayerCardException, BetNotExceptedException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
-        BettingRound bettingRound = new BettingRound();
+        BettingRound bettingRound = new BettingRound(testBettingRoundID,testBetToken);
         GamingMachine machine = new GamingMachine(cashier_local, bettingRound);
         GamblerCard card = (GamblerCard) cashier_local.distributeGamblerCard();
         cashier_local.addAmount(card, new MoneyAmount(100));

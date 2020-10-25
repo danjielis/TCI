@@ -5,6 +5,7 @@ import casino.idfactory.BettingRoundID;
 import gamblingauthoritiy.BetToken;
 import casino.bet.Bet;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
@@ -14,10 +15,16 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
-    private final Set<Bet> bets= new Set<Bet>() {
+    private ArrayList a = new ArrayList<Bet>();
+    private BettingRoundID bettingRoundID;
+    private BetToken betToken;
+    private Set<Bet> bets= new Set<Bet>() {
+
+        private ArrayList <Bet> betArrayList = new ArrayList<>(10);
+
         @Override
         public int size() {
-            return 0;
+        return betArrayList.size();
         }
 
         @Override
@@ -47,7 +54,11 @@ public class BettingRound implements IBettingRound {
 
         @Override
         public boolean add(Bet bet) {
-            return false;
+            if(betArrayList.contains(bet))
+            {
+                return false;
+            }
+            return  betArrayList.add(bet);
         }
 
         @Override
@@ -78,18 +89,20 @@ public class BettingRound implements IBettingRound {
         @Override
         public void clear() {
 
+            betArrayList.clear();
+
         }
     };
-    public BettingRound()
-    {
-    }
 
-    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken, ICashier cashier) {
+    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken) {
+        this.bettingRoundID = bettingRoundID;
+        this.betToken = betToken;
+
     }
 
     @Override
     public BettingRoundID getBettingRoundID() {
-        return null;
+        return bettingRoundID;
     }
 
     /**
@@ -125,7 +138,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public BetToken getBetToken() {
-        return null;
+        return betToken;
     }
 
     /**
@@ -133,7 +146,6 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public int numberOFBetsMade() {
-        return 0;
-
+        return bets.size();
     }
 }
