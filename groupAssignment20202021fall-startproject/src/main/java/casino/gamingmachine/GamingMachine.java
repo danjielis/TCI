@@ -45,7 +45,7 @@ public class GamingMachine implements IGamingMachine {
         if (this.getConnectedCard() == null) { throw new NoPlayerCardException(); }
         if (amountInCents < 1) { throw new BetNotExceptedException(); }
 
-        Bet bet = new Bet((BetID) IDFactory.generateID("betID"), new MoneyAmount(amountInCents));
+        Bet bet = new Bet((BetID) this.connectedCard.generateNewBetID(), new MoneyAmount(amountInCents));
 
         if (this.cashier.checkIfBetIsValid(this.connectedCard, bet)) {
             if (this.bettingRound.placeBet(bet)) {

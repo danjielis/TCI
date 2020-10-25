@@ -1,21 +1,34 @@
 package casino.idfactory;
 
+import casino.bet.Bet;
 import casino.bet.BetID;
 import casino.cashier.CardID;
+import casino.cashier.Cashier;
+import casino.game.BettingRound;
 import casino.game.BettingRoundID;
+import casino.gamingmachine.GamingMachine;
 import casino.gamingmachine.GamingMachineID;
 import org.junit.Before;
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 
 public class IDFactoryTest {
 
+    // STUDENT C - DANAS JUSYS
+
     private IDFactory IDfactory;
+    private Cashier cashier;
+    private BettingRound bettingRound;
 
     @Before
-    public void setUp() { this.IDfactory = new IDFactory(); }
+    public void setUp() {
+        this.IDfactory = new IDFactory();
+        this.cashier = mock(Cashier.class);
+        this.bettingRound = mock(BettingRound.class);
+    }
     //------------------------------------------------------------------
 
 

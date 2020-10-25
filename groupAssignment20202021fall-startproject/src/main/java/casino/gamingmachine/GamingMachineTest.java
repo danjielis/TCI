@@ -19,6 +19,8 @@ import static org.mockito.Mockito.*;
 
 public class GamingMachineTest {
 
+    // STUDENT C - DANAS JUSYS
+
     private GamblerCard card;
     private Cashier cashier;
     private BettingRound bettingRound;
@@ -32,7 +34,7 @@ public class GamingMachineTest {
         this.bettingRound = mock(BettingRound.class);
         this.logging = mock(BetLoggingAuthority.class);
     }
-
+    //------------------------------------------------------------------
 
     /**
      * A gambler card (card) can be stored at a gaming machine.
@@ -221,7 +223,7 @@ public class GamingMachineTest {
      * @throws InvalidAmountException
      */
     @Test
-    public void ShouldInformCashierDuringBetPlacement() throws NoPlayerCardException, BetNotExceptedException, InvalidAmountException {
+    public void ShouldKeepTrackOfBetsPlacedOnThisMachineThisRound() throws NoPlayerCardException, BetNotExceptedException, InvalidAmountException {
         // Arrange - preconditions and inputs
         Cashier cashier_local = new Cashier(logging);
         BettingRound bettingRound = new BettingRound();
@@ -265,6 +267,37 @@ public class GamingMachineTest {
 
         // Assert - expecting desired outcome
         assertTrue(machine.getBets().size() == 0);
+    }
+
+
+    // -- some mocked test using verify
+    @Test
+    public void FAILED_TEST_WITH_EXPLANATION() throws NoPlayerCardException, BetNotExceptedException {
+        Cashier cashier_loc = mock(Cashier.class);
+        BettingRound round_loc = mock(BettingRound.class);
+
+        GamingMachine sut = new GamingMachine(cashier_loc, round_loc);
+
+        when(cashier_loc.distributeGamblerCard()).thenReturn(new GamblerCard());
+        GamblerCard card_loc = (GamblerCard) cashier_loc.distributeGamblerCard();
+        sut.connectCard(card);
+
+        boolean confirmation = sut.placeBet(100);
+        //System.out.println(confirmation); -> always false
+
+        //verify(cashier_loc).checkIfBetIsValid(card, ->BET<- );
+        // in order to see whether mocked cashier checks whether a balance is sufficient
+        // to make a bidding, two parameters are needed the card(can be mocked), and the bet,
+        // which actually can not be mocked since it is created in the SUT, which leaves the
+        // mocking invalid in this case. Mocked and non mocked object should have clear distinction,
+        // however here SUT creates something, that mocked object should use, and it just collapses.
+        // This applies not only to cashier checking if bet can be made (sufficient money), but also
+        // betting round checking if bet can be made, since both of these object use Bet object, one
+        // that is created internally by gaming machine, and therefore can not be mocked.
+
+        // On a similar note, it seems tricky to tests whether the bet could win, if for instance,
+        // all bet were made from this machine alone (winner should be from that set), since it
+        // does not allow to properly mock cashier and bettingRound methods.
     }
 
 }

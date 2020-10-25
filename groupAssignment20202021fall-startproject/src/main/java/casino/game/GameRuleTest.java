@@ -15,6 +15,7 @@ import static org.mockito.Mockito.mock;
 
 public class GameRuleTest {
 
+    // STUDENT C - DANAS JUSYS
 
     /**
      * Should return a number that is greater than 0, and represents maximum
@@ -30,7 +31,7 @@ public class GameRuleTest {
         int count = gameRule.getMaxBetsPerRound();
 
         // Assert - expecting desired outcome
-        assertTrue("Bet count must always exceed zero allowed bets.", count > 0);
+        assertTrue("Bet count must always exceed zero allowed bets", count > 0);
     }
 
 
@@ -57,7 +58,8 @@ public class GameRuleTest {
         BetResult result = gameRule.determineWinner((Integer) random, bet_set);
 
         // Assert - expecting desired outcome
-        assertNotNull(result);
+        assertTrue("must equals one of the placed bets",
+                ((result.getWinningBet().getBetID() == betID_1) || (result.getWinningBet().getBetID() == betID_2)));
     }
 
 
@@ -77,5 +79,8 @@ public class GameRuleTest {
         // Act - action on SUT
         BetResult result = gameRule.determineWinner(69, bet_set);
     }
+
+
+
 
 }
