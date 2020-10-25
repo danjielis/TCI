@@ -27,4 +27,8 @@ public class Player {
     public GamingMachineID selectedGamingMachineID() {
         return this.gamingMachine.getGamingMachineID();
     }
+
+    public long getAvailableAmount() {
+        return this.connectedCard.getBalance().getAmountInCents();
+    }
 }
