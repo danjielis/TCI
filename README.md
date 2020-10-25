@@ -37,11 +37,11 @@ Only setting up that you might have to do, based on your IDE and Gradle setting 
 Refer to dependencies.
 
 ## Tests distribution
-Student A: cashier, bettinground, abstractgame, BetID
+Student A (Yoanna Borisova): cashier, bettinground, abstractgame, BetID
 
-Student B: defaultgame, gamblercard, BettingRoundID, GamingMachineID
+Student B (Dongdong Ke): defaultgame, gamblercard, BettingRoundID, GamingMachineID
 
-Student C: gamingmachine, gamerule, idfactory, CardID
+Student C (Danas Jusys): gamingmachine, gamerule, idfactory, CardID
 
 ## Contributing
 
