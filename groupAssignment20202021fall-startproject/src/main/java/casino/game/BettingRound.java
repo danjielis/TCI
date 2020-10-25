@@ -14,6 +14,8 @@ import java.util.Set;
  */
 public class BettingRound implements IBettingRound {
 
+    private BettingRoundID bettingRoundID;
+    private BetToken betToken;
     private final Set<Bet> bets= new Set<Bet>() {
         @Override
         public int size() {
@@ -84,12 +86,14 @@ public class BettingRound implements IBettingRound {
     {
     }
 
-    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken, ICashier cashier) {
+    public BettingRound(BettingRoundID bettingRoundID, BetToken betToken) {
+        this.bettingRoundID = bettingRoundID;
+        this.betToken = betToken;
     }
 
     @Override
     public BettingRoundID getBettingRoundID() {
-        return null;
+        return bettingRoundID;
     }
 
     /**
@@ -125,7 +129,7 @@ public class BettingRound implements IBettingRound {
      */
     @Override
     public BetToken getBetToken() {
-        return null;
+        return betToken;
     }
 
     /**
