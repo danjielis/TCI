@@ -87,4 +87,54 @@ public class IDFactoryTest {
         assertThat(gamingMachineID, instanceOf(GeneralID.class));
     }
 
+
+    /**
+     * All created types must have a unique ID.
+     */
+    @Test
+    public void ShouldCreateTypeInstancesWithUniqueIDs() {
+        // Arrange - preconditions and inputs
+        // Act - action on SUT
+        BetID betID = (BetID) IDfactory.generateID("IDBet");
+        BettingRoundID bettingRoundID = (BettingRoundID) IDfactory.generateID("IDBettingRound");
+        CardID cardID = (CardID) IDfactory.generateID("IDCard");
+        GamingMachineID gamingMachineID = (GamingMachineID) IDfactory.generateID("IDGamingMachine");
+
+        // Assert - expecting desired outcome
+        assertTrue("type IDs must be unique",
+                (betID.getUniqueID() != bettingRoundID.getUniqueID()) &&
+                        (betID.getUniqueID() != cardID.getUniqueID()) &&
+                        (betID.getUniqueID() != gamingMachineID.getUniqueID()) &&
+                        (bettingRoundID.getUniqueID() != cardID.getUniqueID()) &&
+                        (bettingRoundID.getUniqueID() != gamingMachineID.getUniqueID()) &&
+                        (cardID.getUniqueID() != gamingMachineID.getUniqueID())
+                );
+    }
+
+
+    /**
+     * All created types must have a different TimeStamp.
+     */
+    @Test
+    public void ShouldCreateTypeInstancesWithDifferentTimeStamps() throws InterruptedException {
+        // Arrange - preconditions and inputs
+        // Act - action on SUT
+        BetID betID = (BetID) IDfactory.generateID("IDBet");
+        Thread.sleep(100);
+        BettingRoundID bettingRoundID = (BettingRoundID) IDfactory.generateID("IDBettingRound");
+        Thread.sleep(100);
+        CardID cardID = (CardID) IDfactory.generateID("IDCard");
+        Thread.sleep(100);
+        GamingMachineID gamingMachineID = (GamingMachineID) IDfactory.generateID("IDGamingMachine");
+
+        // Assert - expecting desired outcome
+        assertTrue("type timeStamps must be different",
+                (betID.getTimeStamp() != bettingRoundID.getTimeStamp()) &&
+                        (betID.getTimeStamp() != cardID.getTimeStamp()) &&
+                        (betID.getTimeStamp() != gamingMachineID.getTimeStamp()) &&
+                        (bettingRoundID.getTimeStamp() != cardID.getTimeStamp()) &&
+                        (bettingRoundID.getTimeStamp() != gamingMachineID.getTimeStamp()) &&
+                        (cardID.getTimeStamp() != gamingMachineID.getTimeStamp())
+        );
+    }
 }
