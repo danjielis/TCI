@@ -1,7 +1,9 @@
 package person;
 
+import casino.bet.MoneyAmount;
 import casino.cashier.Cashier;
 import casino.cashier.GamblerCard;
+import casino.cashier.InvalidAmountException;
 import casino.gamingmachine.GamingMachine;
 import casino.idfactory.GamingMachineID;
 import gamblingauthoritiy.IBetLoggingAuthority;
@@ -55,6 +57,23 @@ public class PlayerTest {
         player.selectGamingMachine(gamingMachine);
 
         assertEquals(player.selectedGamingMachineID(), gamingMachine.getGamingMachineID());
+    }
+
+
+
+    @Test
+    public void ShouldBeAbleToUpdateCardBalance() throws InvalidAmountException {
+        Player player = new Player();
+        // approaches cashier to get a card
+        Cashier cashier = new Cashier(loggingAuthority);
+        // hands out card
+        GamblerCard gamblerCard = (GamblerCard) cashier.distributeGamblerCard();
+        // obtain card
+        player.obtainGamblerCard(gamblerCard);
+        // PLAYER GIVES CASH TO THE CASHIER IN REAL LIFE
+        cashier.addAmount(gamblerCard, new MoneyAmount(100));
+
+        assertEquals(player.getAvailableAmount(), 100);
     }
 
 }
